@@ -1,0 +1,28 @@
+<ion-split-pane contentId="home-content">
+    <ion-menu contentId="home-content" type="overlay">
+        <ion-header class="ion-margin-bottom">
+            <ion-toolbar>
+                <ion-title slot="start">
+                    User Name
+                    <!-- <ion-label class="ion-padding-start"> Any other info about user </ion-label> -->
+                </ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content class="ion-padding-top ion-padding-bottom">
+            <ion-list id="inbox-list">
+                <ion-menu-toggle class="ion-margin-top" auto-hide="false" *ngFor="let p of pages; let i = index">
+                    <ion-item routerDirection="root" [routerLink]="[p.url]" routerLinkActive="selected">
+                        <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+                        <mat-icon slot="start"> dashboard </mat-icon>
+                        <ion-label>{{ p.title }}</ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
+            <ion-item lines="none" detail="false" class="theme-toggler ion-padding-top">
+                <ion-label> Dark Theme </ion-label>
+                <ion-toggle (ionChange)="toggleTheme($event?.detail?.checked)" color="primary"></ion-toggle>
+            </ion-item>
+        </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="home-content"></ion-router-outlet>
+</ion-split-pane>

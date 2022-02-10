@@ -1,0 +1,250 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+i {
+  font-style: italic;
+}
+
+b,
+strong {
+  font-weight: var(--ion-bold);
+}
+
+P {
+  font-size: 14px;
+  line-height: 16px;
+  color: var(--ion-text-color);
+}
+
+h6 {
+  font-size: 12px;
+  line-height: 14px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+h5 {
+  font-size: 14px;
+  line-height: 18px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 24px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 28px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+h1 {
+  font-size: 28px;
+  line-height: 32px;
+  color: var(--ion-text-color);
+  font-weight: var(--ion-bold);
+}
+
+img[src=""],
+img[src="(unknown)"] {
+  display: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.innerhtml p,
+.innerhtml h1,
+.innerhtml h2,
+.innerhtml h3,
+.innerhtml h4,
+.innerhtml h5,
+.innerhtml h6 {
+  color: var(--ion-text-color);
+}
+
+.border-none {
+  border: none !important;
+}
+
+.sync-spinner {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* CUSTOM CSS */
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
