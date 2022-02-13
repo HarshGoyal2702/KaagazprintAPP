@@ -1,17 +1,25 @@
 <ion-content class="ion-padding">
     <div class="container flex-col">
         <div class="header">
-            <span class="logo"></span>
-            <h1 class="ion-margin-top"> Login Now </h1>
+            <span class="logo kaagaz-logo"></span>
+            <h1 class="ion-margin-top"> Welcome <br> Back </h1>
             <p class="ion-margin-top"> Please enter the details below to continue. </p>
         </div>
-        <div class="login">
-
+        <div class="login flex-col ion-padding">
+            <ion-item>
+                <ion-label position="floating">Phone Number</ion-label>
+                <ion-input></ion-input>
+            </ion-item>
+            <span class="actions flex-row ion-padding ion-margin-top">
+                <ion-fab>
+                    <ion-fab-button color="primary">
+                        <ion-icon name="chevron-forward"></ion-icon>
+                    </ion-fab-button>
+                </ion-fab>
+            </span>
         </div>
         <div class="sign-up">
-            <ion-button color="primary" expand="block" fill="solid" size="large" shape="round">
-                login
-            </ion-button>
+            <ion-button fill="clear" color="primary"> Sign Up </ion-button>
         </div>
     </div>
 </ion-content>

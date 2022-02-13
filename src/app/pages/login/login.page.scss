@@ -1,12 +1,39 @@
 .container {
   height: 100%;
+  padding-left: 16px;
   justify-content: space-between;
+  ion-fab {
+    position: unset;
+  }
   .header {
+    margin-top: 48px;
     align-items: center;
+
     .logo {
       width: 144px;
       height: 144px;
       display: block;
+    }
+
+    h1 {
+      line-height: 38px;
+    }
+
+    p {
+      margin-top: 8px;
+      color: var(--ion-color-step-350);
+    }
+  }
+
+  .login {
+    flex: 1;
+    justify-content: center;
+    .mat-form-field {
+      width: 100%;
+      font-size: 14px;
+    }
+    .actions {
+      justify-content: flex-end;
     }
   }
 }

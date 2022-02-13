@@ -248,3 +248,10 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
 }
+
+.kaagaz-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-image: url("../assets/logos/kaagaz-print.jpg");
+}
