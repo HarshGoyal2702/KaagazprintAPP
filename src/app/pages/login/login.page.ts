@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Toast } from '@capacitor/toast';
 
 @Component({
   selector: 'app-login',
@@ -11,4 +12,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() { }
 
+
+  login() {
+    Toast.show({
+      text: 'Hello!',
+    });
+  }
 }
