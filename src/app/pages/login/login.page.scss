@@ -1,5 +1,7 @@
 .container {
+  width: 100%;
   height: 100%;
+  text-align: left;
   padding-left: 16px;
   justify-content: space-between;
   ion-fab {
@@ -20,6 +22,7 @@
     }
 
     p {
+      line-height: 22px;
       margin-top: 8px;
       color: var(--ion-color-step-350);
     }
@@ -32,8 +35,11 @@
       width: 100%;
       font-size: 14px;
     }
-    .actions {
-      justify-content: flex-end;
-    }
+  }
+  .actions {
+    justify-content: flex-end;
+  }
+  .otp-input {
+    letter-spacing: 18px;
   }
 }

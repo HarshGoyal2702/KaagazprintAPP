@@ -172,7 +172,6 @@ export class HttpRequestService {
         );
     }
 
-
     // showAlert(options: AlertOptions) { this._alert.showAlert(options); }
 
     handleError(error: HttpErrorResponse): Observable<Response<any>> {

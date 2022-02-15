@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { LoginGuard } from 'src/app/shared/guards/login.guard';
 
 import { DashboardPage } from './dashboard.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DashboardPage
+    component: DashboardPage,
+    canActivate: [LoginGuard]
   }
 ];
 
@@ -14,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class DashboardPageRoutingModule {}
+export class DashboardPageRoutingModule { }
