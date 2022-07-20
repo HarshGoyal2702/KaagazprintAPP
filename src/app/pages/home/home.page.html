@@ -13,7 +13,7 @@
                 <ion-menu-toggle class="ion-margin-top" auto-hide="false" *ngFor="let p of pages; let i = index">
                     <ion-item routerDirection="root" [routerLink]="[p.url]" routerLinkActive="selected">
                         <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
-                        <mat-icon slot="start"> dashboard </mat-icon>
+                        <mat-icon slot="start"> {{ p.icon }} </mat-icon>
                         <ion-label>{{ p.title }}</ion-label>
                     </ion-item>
                 </ion-menu-toggle>

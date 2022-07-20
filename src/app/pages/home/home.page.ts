@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, Renderer2 } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { CoreService } from 'src/app/shared/core/core.service';
 
@@ -6,11 +6,15 @@ import { CoreService } from 'src/app/shared/core/core.service';
     selector: 'app-home',
     templateUrl: './home.page.html',
     styleUrls: ['./home.page.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class HomePage implements OnInit {
 
-    public pages = [{ title: 'Dashboard', url: '/home/dashboard', icon: 'mail' }];
+    public pages = [
+        { title: 'Dashboard', url: '/kaagaz/dashboard', icon: 'dashboard' },
+        { title: 'Order', url: '/kaagaz/order', icon: 'print' }
+    ];
     constructor(private _renderer: Renderer2, private _core: CoreService,
         private _router: NavController) { }
 

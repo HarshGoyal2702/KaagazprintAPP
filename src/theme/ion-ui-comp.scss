@@ -1,0 +1,91 @@
+/** **************** ION-HEADER & ION-FOOTER STARTS **************** */
+ion-header {
+  &:after {
+    bottom: -1px !important;
+    height: unset !important;
+    background-image: none !important;
+  }
+}
+ion-footer {
+  &::before {
+    background-image: none !important;
+  }
+}
+/** **************** ION-HEADER & ION-FOOTER ENDS **************** */
+
+/** **************** ION-ICON STARTS **************** */
+
+ion-icon {
+  width: var(--size, 18px);
+  height: var(--size, 18px);
+  font-size: var(--size, 18px);
+  &.x-small {
+    --size: 12px;
+  }
+  &.small {
+    --size: 16px;
+  }
+  &.medium {
+    --size: 24px;
+  }
+  &.large {
+    --size: 32px;
+  }
+  &.x-large {
+    --size: 64px;
+  }
+}
+
+/** **************** ION-ICON ENDS **************** */
+
+/** **************** ION-BUTTON STARTS **************** */
+
+// CSS FOR ROUND ION-BUTTON
+ion-buttons {
+  ion-button {
+    &.small {
+      width: 40px !important;
+      height: 40px !important;
+      --padding-top: 0 !important;
+      --padding-end: 0 !important;
+      --padding-bottom: 0 !important;
+      --padding-start: 0 !important;
+      &.button-solid {
+        ion-icon {
+          --size: 18px;
+        }
+      }
+    }
+    &.medium {
+      width: 48px !important;
+      height: 48px !important;
+    }
+    &.large {
+      width: 56px !important;
+      height: 56px !important;
+      &.button-solid {
+        ion-icon {
+          --size: 32px;
+        }
+      }
+    }
+  }
+}
+
+ion-button {
+  text-transform: capitalize;
+  &.button-large {
+    margin: 0px;
+    height: 56px;
+    font-size: 18px;
+    --border-radius: 40px;
+  }
+  &.button-outline {
+    --border-width: 1px;
+  }
+  &.button-round {
+    --border-radius: 40px;
+  }
+}
+
+/** **************** ION-BUTTON ENDS **************** */

@@ -10,19 +10,6 @@ export class LoginGuard implements CanLoad, CanActivate {
     constructor(private _core: CoreService, private _toast: ToastController,
         private _router: NavController) { }
 
-    private _isLogin(): boolean {
-        console.log('checking guard');
-        if (this._core.user && this._core.authToken) {
-            return true;
-        } else {
-            this._toast.create({
-                message: 'Not Authorise....please login again.',
-                duration: 5000
-            }).then(el => el.present());
-            this._router.navigateRoot(['/login']);
-            return false;
-        }
-    }
     canLoad(route: Route) {
         return this._isLogin();
     }
@@ -33,5 +20,18 @@ export class LoginGuard implements CanLoad, CanActivate {
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         return this._isLogin();
+    }
+    private _isLogin(): boolean {
+        return true;
+        // if (this._core.user && this._core.authToken) {
+        //     return true;
+        // } else {
+        //     this._toast.create({
+        //         message: 'Not Authorise....please login again.',
+        //         duration: 5000
+        //     }).then(el => el.present());
+        //     this._router.navigateRoot(['/login']);
+        //     return false;
+        // }
     }
 }

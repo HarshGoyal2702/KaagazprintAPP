@@ -1,0 +1,41 @@
+.doc {
+  width: 300px;
+  flex: 0 0 300px;
+  border-radius: 6px;
+  border: 1px solid var(--ion-color-primary);
+  .preview {
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+  }
+  .status {
+    padding: 8px;
+    position: relative;
+    align-items: center;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    background: var(--ion-color-step-50);
+    border-top: 1px solid var(--ion-color-primary);
+    .name {
+      flex: 1;
+      margin: 0px 8px;
+      // overflow: hidden;
+      white-space: pre-wrap;
+      // text-overflow: ellipsis;
+    }
+    .mat-progress-spinner {
+      top: 7.5px;
+      right: 12.5px;
+      position: absolute;
+    }
+  }
+}
+
+@media (max-width: 575.98px) {
+  .doc {
+    width: 100% !important;
+    flex: 1 1 100% !important;
+  }
+}

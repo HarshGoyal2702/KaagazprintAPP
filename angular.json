@@ -1,14 +1,14 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
-  "defaultProject": "app",
+  "defaultProject": "kaagaz",
   "newProjectRoot": "projects",
   "projects": {
-    "app": {
+    "kaagaz": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "kaagaz",
       "schematics": {},
       "architect": {
         "build": {
@@ -31,7 +31,22 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
+            "styles": [
+              "src/theme/variables.scss",
+              "src/global.scss",
+              {
+                "input": "src/theme/ion-ui-comp.scss",
+                "inject": true
+              },
+              {
+                "input": "src/theme/core.scss",
+                "inject": true
+              },
+              {
+                "input": "src/theme/widgets.scss",
+                "inject": true
+              }
+            ],
             "scripts": [],
             "aot": false,
             "vendorChunk": true,
@@ -73,11 +88,11 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "kaagaz:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "kaagaz:build:production"
             },
             "ci": {
               "progress": false
@@ -87,7 +102,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "kaagaz:build"
           }
         },
         "test": {
@@ -122,48 +137,45 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "app:serve"
+            "devServerTarget": "kaagaz:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "app:serve:production"
+              "devServerTarget": "kaagaz:serve:production"
             },
             "ci": {
-              "devServerTarget": "app:serve:ci"
+              "devServerTarget": "kaagaz:serve:ci"
             }
           }
         },
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
-            "browserTarget": "app:build"
+            "browserTarget": "kaagaz:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "app:build:production"
+              "browserTarget": "kaagaz:build:production"
             }
           }
         },
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
-            "cordovaBuildTarget": "app:ionic-cordova-build",
-            "devServerTarget": "app:serve"
+            "cordovaBuildTarget": "kaagaz:ionic-cordova-build",
+            "devServerTarget": "kaagaz:serve"
           },
           "configurations": {
             "production": {
-              "cordovaBuildTarget": "app:ionic-cordova-build:production",
-              "devServerTarget": "app:serve:production"
+              "cordovaBuildTarget": "kaagaz:ionic-cordova-build:production",
+              "devServerTarget": "kaagaz:serve:production"
             }
           }
         }

@@ -1,0 +1,25 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-menu-button slot="start" (click)="toggleMenu()"></ion-menu-button>
+        <ion-title>Order</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+    <div class="container">
+        <div class="doc-picker">
+            <kaagaz-doc-picker (selectedFile)="onFileSelection($event)"></kaagaz-doc-picker>
+        </div>
+        <ul class="docs flex-row ion-margin-top">
+            <li class="doc" *ngFor="let doc of docs">
+                <kaagaz-doc-renderer [doc]="doc"></kaagaz-doc-renderer>
+            </li>
+        </ul>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar class="ion-padding">
+        <ion-button slot="end" color="primary" fill="solid"> Submit Order </ion-button>
+    </ion-toolbar>
+</ion-footer>

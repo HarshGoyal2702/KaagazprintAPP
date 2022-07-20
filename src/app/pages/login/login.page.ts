@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IonSlides, NavController, ToastController } from '@ionic/angular';
 import { CoreService } from 'src/app/shared/core/core.service';
@@ -9,7 +9,8 @@ import { LoginService } from 'src/app/shared/services/login.service';
     selector: 'app-login',
     templateUrl: './login.page.html',
     styleUrls: ['./login.page.scss'],
-    providers: [LoginService]
+    providers: [LoginService],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginPage implements OnInit, AfterViewInit {
 
@@ -30,17 +31,19 @@ export class LoginPage implements OnInit, AfterViewInit {
         this._slides.lockSwipes(true);
     }
     login() {
-        this.loader = true;
-        this._login.generateOTP(this.phoneNumber.value).subscribe(
-            (success: boolean) => {
-                if (success) {
-                    this._slides.lockSwipes(false); this._slides.slideNext();
-                    this._slides.lockSwipes(true);
-                }
-            },
-            (error) => { },
-            () => { this.loader = false; }
-        );
+        this._router.navigateRoot(['/kaagaz']);
+        // console.log('loggin in');
+        // this.loader = true;
+        // this._login.generateOTP(this.phoneNumber.value).subscribe(
+        //     (success: boolean) => {
+        //         if (success) {
+        //             this._slides.lockSwipes(false); this._slides.slideNext();
+        //             this._slides.lockSwipes(true);
+        //         }
+        //     },
+        //     (error) => { },
+        //     () => { this.loader = false; }
+        // );
     }
     verifyOTP() {
         this.loader = true;
@@ -49,7 +52,7 @@ export class LoginPage implements OnInit, AfterViewInit {
                 if (user) {
                     this._core.user = user;
                     this._core.authToken = user.loginToken;
-                    this._router.navigateRoot(['/home']);
+                    this._router.navigateRoot(['/kaagaz']);
                 } else {
                     this.otp.reset();
                     this._toast.create({
