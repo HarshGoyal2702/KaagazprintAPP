@@ -1,18 +1,18 @@
 <div class="doc flex-col">
-    <span class="preview flex-col">
-        <ion-icon class="large" name="document"></ion-icon>
+    <span class="preview flex-col" docs-opener [file]="file" [view]="'with-player'">
+        <!-- <ion-icon class="large" name="document"></ion-icon> -->
     </span>
     <span class="status actions flex-row">
         <ion-icon class="large" name="document"></ion-icon>
-        <mat-progress-spinner *ngIf="(doc?.progress < 100 && doc?.progress > 0)"
-            [mode]="(doc?.progress <= 10) ? 'indeterminate' : 'determinate'" [value]="doc?.progress" strokeWidth="2"
+        <p class="name"> {{ file?.fileName }} </p>
+        <mat-progress-spinner *ngIf="(file?.progress < 100 && file?.progress > 0)"
+            [mode]="(file?.progress <= 10) ? 'indeterminate' : 'determinate'" [value]="file?.progress" strokeWidth="2"
             [diameter]="30">
         </mat-progress-spinner>
-        <p class="name"> {{ doc?.name }} </p>
-        <ion-buttons *ngIf="doc?.progress < 100">
-            <!-- (click)="toggleDownloading()" -->
-            <ion-button class="small">
-                <ion-icon class="medium" slot="icon-only" [name]="doc?.progress <= 0 ? 'download' : 'close'"></ion-icon>
+        <ion-buttons *ngIf="file?.progress === 100">
+            <ion-button class="small" (click)="deleteFile()">
+                <ion-icon class="medium" slot="icon-only" name="close">
+                </ion-icon>
             </ion-button>
         </ion-buttons>
     </span>

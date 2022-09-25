@@ -1,0 +1,8 @@
+<kaagaz-doc-picker [multiple]="multiple" (fileSelected)="onFileSelection($event)">
+    <ng-container *ngFor="let file of savedFiles;let fileIndex = index">
+        <kaagaz-doc-renderer kaagazDocUploader [handleFocus]="multiple" (fileFocus)="onFileFocus(file)"
+            (fileDelete)="onFileDelete(file, fileIndex)" (fileUploaded)="onServerUrlFetched($event, fileIndex)"
+            [file]="file">
+        </kaagaz-doc-renderer>
+    </ng-container>
+</kaagaz-doc-picker>

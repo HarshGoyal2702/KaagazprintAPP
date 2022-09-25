@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://api.kaagazprint.com/',
+  baseUrl: 'http://api.kaagazprint.com/',
 };

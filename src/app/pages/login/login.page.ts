@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { IonSlides, NavController, ToastController } from '@ionic/angular';
 import { CoreService } from 'src/app/shared/core/core.service';
@@ -21,7 +21,8 @@ export class LoginPage implements OnInit, AfterViewInit {
     phoneNumber: FormControl = new FormControl('', [Validators.required,
     Validators.maxLength(10), Validators.minLength(10)]);
     constructor(private _login: LoginService, private _core: CoreService,
-        private _router: NavController, private _toast: ToastController) { }
+        private _router: NavController, private _toast: ToastController,
+        private _cdr: ChangeDetectorRef) { }
 
     ngOnInit() { }
     ngAfterViewInit() { this._slides.lockSwipes(true); }
@@ -31,19 +32,19 @@ export class LoginPage implements OnInit, AfterViewInit {
         this._slides.lockSwipes(true);
     }
     login() {
-        this._router.navigateRoot(['/kaagaz']);
-        // console.log('loggin in');
-        // this.loader = true;
-        // this._login.generateOTP(this.phoneNumber.value).subscribe(
-        //     (success: boolean) => {
-        //         if (success) {
-        //             this._slides.lockSwipes(false); this._slides.slideNext();
-        //             this._slides.lockSwipes(true);
-        //         }
-        //     },
-        //     (error) => { },
-        //     () => { this.loader = false; }
-        // );
+        // this._router.navigateRoot(['/kaagaz']);
+        console.log('loggin in');
+        this.loader = true;
+        this._login.generateOTP(this.phoneNumber.value).subscribe(
+            (success: boolean) => {
+                if (success) {
+                    this._slides.lockSwipes(false); this._slides.slideNext();
+                    this._slides.lockSwipes(true);
+                }
+            },
+            (error) => { },
+            () => { this.loader = false; this._cdr.markForCheck(); }
+        );
     }
     verifyOTP() {
         this.loader = true;

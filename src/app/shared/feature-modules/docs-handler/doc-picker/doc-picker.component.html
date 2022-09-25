@@ -1,9 +1,14 @@
-<div class="container uploader flex-row">
-    <ion-icon color="primary" class="x-large" name="share"></ion-icon>
-    <ion-label class="ion-padding-start">
-        <ion-text>
-            <h1> Upload Files </h1>
-        </ion-text>
-        <p>PDF, DOC, PPT, JPG, PNG</p>
-    </ion-label>
+<div class="container">
+    <div class="uploader flex-row" (click)="onClicked($event)">
+        <ion-icon color="primary" class="x-large" name="share"></ion-icon>
+        <ion-label class="ion-padding-start">
+            <ion-text>
+                <h1> Upload </h1>
+            </ion-text>
+            <p>PDF, DOC, PPT, JPG, PNG</p>
+        </ion-label>
+    </div>
+    <div class="files flex-row ion-margin-top">
+        <ng-content></ng-content>
+    </div>
 </div>

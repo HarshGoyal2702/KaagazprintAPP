@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
 
@@ -11,12 +11,12 @@ import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
 export class OrderPage implements OnInit {
 
     docs: KaagazDocument[] = [];
-    constructor(private _menu: MenuController) { }
+    constructor(private _menu: MenuController, private _cdr: ChangeDetectorRef) { }
 
     ngOnInit() { }
     toggleMenu() { this._menu.toggle(); }
-
-    onFileSelection(doc: KaagazDocument) {
-        this.docs.push(doc);
+    onFileUploaded(file: KaagazDocument) {
+        // this.docs = files;
+        console.log(file);
     }
 }

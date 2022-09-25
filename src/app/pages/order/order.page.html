@@ -8,13 +8,15 @@
 <ion-content class="ion-padding">
     <div class="container">
         <div class="doc-picker">
-            <kaagaz-doc-picker (selectedFile)="onFileSelection($event)"></kaagaz-doc-picker>
+            <kaagaz-docs-handler [multiple]="false" (fileReady)="onFileUploaded($event)">
+            </kaagaz-docs-handler>
+            <!-- <kaagaz-doc-picker [multiple]="true" (fileSelected)="onFileSelection($event)"></kaagaz-doc-picker> -->
         </div>
-        <ul class="docs flex-row ion-margin-top">
+        <!-- <ul class="docs flex-row ion-margin-top">
             <li class="doc" *ngFor="let doc of docs">
-                <kaagaz-doc-renderer [doc]="doc"></kaagaz-doc-renderer>
+                <kaagaz-doc-renderer [file]="doc"></kaagaz-doc-renderer>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </ion-content>
 

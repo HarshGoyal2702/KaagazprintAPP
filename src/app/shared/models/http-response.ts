@@ -4,7 +4,7 @@ export class HttpResponse {
     code: string;
     totalCount?: number;
 }
-export class Response<T> extends HttpResponse {
+export class Response<T = any> extends HttpResponse {
     data: T;
     constructor(error: boolean, message: string, code: string, data: any) {
         super();

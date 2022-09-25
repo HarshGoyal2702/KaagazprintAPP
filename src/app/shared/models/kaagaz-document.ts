@@ -1,18 +1,24 @@
 export class KaagazDocument {
-    id: number;
-    name: string;
+    id: string;
+    fileName: string;
     fail: boolean;
-    localUrl: string;
+    localUrl: string | any;
     type: string;
     ext: string;
-    serverUrl: string;
+    fileUrl: string;
     formData: FormData;
-    isSelected: boolean;
+    focus: boolean;
     progress: number = 0;
-    constructor(name: string, localUrl?: string, type?: string, ext?: string) {
-        this.name = name;
+    fileSize: string;
+    thumbnailUrl: string;
+
+    constructor(name: string, localUrl?: string, type?: string, ext?: string, size?: string, fileUrl?: string) {
+        this.fileName = name;
         this.type = type;
         this.ext = ext;
         this.localUrl = localUrl;
+        this.fileSize = size;
+        this.fileUrl = fileUrl;
     }
+
 }

@@ -22,7 +22,7 @@ export class DocPickerComponent implements OnInit {
 
     @Input() multiple: boolean;
     private _fileInputEL: HTMLInputElement;
-    @Output() selectedFile: EventEmitter<KaagazDocument> = new EventEmitter<KaagazDocument>();
+    @Output() fileSelected: EventEmitter<KaagazDocument> = new EventEmitter<KaagazDocument>();
     constructor(@Inject(DOCUMENT) private doc: Document, private _plt: Platform,
         private _actionSt: ActionSheetController, private _fileSys: File,
         private imagePicker: ImagePicker, private _santizr: DomSanitizer) { }
@@ -34,8 +34,10 @@ export class DocPickerComponent implements OnInit {
             for (let i = 0; i < this._fileInputEL.files.length; i++) { this.readFile(<any>this._fileInputEL.files[i]); }
         };
     }
-    @HostListener('click', ['event'])
-    onClicked(event: Event) { this._plt.is('android') || this._plt.is('ios') ? this.openDocsLibrary4Mobile() : this.openDocsLibrary4Web(); }
+    // @HostListener('click', ['event'])
+    onClicked(event: Event) {
+        this._plt.is('android') || this._plt.is('ios') ? this.openDocsLibrary4Mobile() : this.openDocsLibrary4Web();
+    }
     openDocsLibrary4Web() { this._fileInputEL.click(); }
     async openDocsLibrary4Mobile() {
         const actionSheet = await this._actionSt.create({
@@ -105,7 +107,7 @@ export class DocPickerComponent implements OnInit {
             formData.append('name', (<any>file).name);
             formData.append('file', imgBlob, (<any>file).name);
             doc.formData = formData;
-            this.selectedFile.emit(doc);
+            this.fileSelected.emit(doc);
         };
         zoneOriginalInstance.readAsArrayBuffer((<any>file));
         // const fileReader = new FileReader();
@@ -119,7 +121,7 @@ export class DocPickerComponent implements OnInit {
         //     formData.append('name', (<any>file).name);
         //     formData.append('file', imgBlob, (<any>file).name);
         //     phyFile.formData = formData;
-        //     this.selectedFile.emit(phyFile);
+        //     this.fileSelected.emit(phyFile);
         // };
         // zoneOriginalInstance.readAsArrayBuffer((<any>file));
     }

@@ -1,7 +1,12 @@
+.files {
+  flex-wrap: wrap;
+}
 .uploader {
+  width: 100%;
   padding: 16px;
-  border-radius: 40px;
   align-items: center;
+  border-radius: 40px;
+  // justify-content: space-between;
+  background: var(--ma-color-step-0);
   border: 2px dashed var(--ion-color-primary);
-  background: var(--med-selected-item-background-step-50);
 }

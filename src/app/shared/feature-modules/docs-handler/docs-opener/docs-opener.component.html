@@ -1,0 +1,76 @@
+<ng-container *ngIf="(file?.ext || (file?.fileUrl | docType)) as fileType">
+    <ng-container *ngIf="view === 'icon-only'">
+        <ng-container [ngSwitch]="fileType">
+            <ng-container *ngSwitchCase="'pdf'">
+                <div class="icon-view flex-col">
+                    <mat-icon>picture_as_pdf</mat-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'jpg'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'jpeg'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'png'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'gif'">
+                <div class="icon-view flex-col">
+                    <mat-icon>gif</mat-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mp4'">
+                <div class="icon-view flex-col">
+                    <mat-icon>movie</mat-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mp3'">
+                <div class="icon-view flex-col">
+                    <mat-icon>music_note</mat-icon>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <div class="icon-view flex-col">
+                    <mat-icon>description</mat-icon>
+                </div>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="view === 'with-player'">
+        <div class="loader" *ngIf="loader">
+            <ion-spinner name="lines" color="primary"></ion-spinner>
+        </div>
+        <ng-container [ngSwitch]="fileType">
+            <ng-container *ngSwitchCase="'pdf'">
+                <div class="icon-view flex-col">
+                    <pdf-viewer class="pdf-viewer" (after-load-complete)="onLoadingComplete($event)" [page]="1"
+                        [src]="file?.localUrl?.changingThisBreaksApplicationSecurity || file?.fileUrl"></pdf-viewer>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'jpg'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'jpeg'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'png'">
+                <img [src]="file?.localUrl || file?.fileUrl" alt="img">
+            </ng-container>
+            <ng-container *ngSwitchCase="'gif'"></ng-container>
+            <ng-container *ngSwitchCase="'mp4'">
+                <video type="video/mp4" [src]="file?.localUrl || file?.fileUrl" controls></video>
+            </ng-container>
+            <ng-container *ngSwitchCase="'mp3'">
+                <div class="container full-height ion-align-items-center ion-justify-content-center">
+                    <audio [src]="file?.localUrl || file?.fileUrl" controls></audio>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+                <span class="icon-view flex-col">
+                    <mat-icon>description</mat-icon>
+                </span>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-container>

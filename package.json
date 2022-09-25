@@ -38,6 +38,7 @@
     "@ionic/angular": "^5.5.2",
     "class-transformer": "^0.5.1",
     "cordova-plugin-file": "^7.0.0",
+    "ng2-pdf-viewer": "^6.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"

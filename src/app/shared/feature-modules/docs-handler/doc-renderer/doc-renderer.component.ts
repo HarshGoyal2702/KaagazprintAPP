@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
 
 @Component({
@@ -9,11 +9,16 @@ import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
 })
 export class DocRendererComponent implements OnInit {
 
-    @Input() doc: KaagazDocument;
+    @Input() file: KaagazDocument;
+    @Input() handleFocus: boolean;
+    @Output() fileFocus: EventEmitter<void> = new EventEmitter<void>();
+    @Output() fileDelete: EventEmitter<void> = new EventEmitter<void>();
     constructor() { }
 
-    ngOnInit() {
-        console.log(this.doc);
+    ngOnInit() { console.log(this.file); }
+    selectFile() {
+        this.file.focus = !this.file.focus;
+        this.fileFocus.emit();
     }
-
+    deleteFile() { this.fileDelete.emit(); }
 }

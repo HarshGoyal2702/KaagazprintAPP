@@ -21,12 +21,12 @@
     .name {
       flex: 1;
       margin: 0px 8px;
-      // overflow: hidden;
-      white-space: pre-wrap;
-      // text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
     .mat-progress-spinner {
-      top: 7.5px;
+      top: 12.5px;
       right: 12.5px;
       position: absolute;
     }
