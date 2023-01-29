@@ -5,16 +5,10 @@ ion-header {
     height: unset !important;
     background-image: none !important;
   }
-  ion-toolbar {
-    --background: var(--ion-color-light);
-  }
 }
 ion-footer {
   &::before {
     background-image: none !important;
-  }
-  ion-toolbar {
-    --background: var(--ion-color-light);
   }
 }
 /** **************** ION-HEADER & ION-FOOTER ENDS **************** */
@@ -116,9 +110,6 @@ ion-item {
 /** **************** ION-MODAL STARTS **************** */
 
 ion-modal {
-  ion-content {
-    --background: var(--ion-color-light);
-  }
 }
 
 /** **************** ION-MODAL ENDS **************** */

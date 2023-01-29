@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AddressComponent } from './address/address.component';
 import { KaagazAddress } from 'kaagaz-models';
@@ -9,6 +9,8 @@ export class AddressAnchorDirective {
 
     @Input() presentingEL: ElementRef;
     @Input() address: KaagazAddress;
+
+    @Output() addressChange: EventEmitter<KaagazAddress> = new EventEmitter<KaagazAddress>();
     constructor(private _modalCT: ModalController) { }
 
     @HostListener('click', ['evnet'])
@@ -19,6 +21,9 @@ export class AddressAnchorDirective {
             presentingElement: this.presentingEL.nativeElement,
             componentProps: { address: this.address || new KaagazAddress() },
         });
-        return await modal.present();
+        await modal.present();
+        const { data } = await modal.onDidDismiss();
+        if (data) { this.addressChange.emit(data); }
     }
+
 }

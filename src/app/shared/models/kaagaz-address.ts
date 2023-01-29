@@ -1,7 +1,7 @@
 export enum AddressType {
-    WORK,
-    HOME,
-    OTHER,
+    WORK = 'work',
+    HOME = 'home',
+    OTHER = 'other',
 }
 
 export class KaagazAddress {

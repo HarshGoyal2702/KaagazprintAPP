@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule, IonicModule, ReactiveFormsModule
   ],
-  exports: [AddressAnchorDirective]
+  exports: [AddressAnchorDirective, AddressRendererComponent]
 })
 
 export class AddressesModule { }

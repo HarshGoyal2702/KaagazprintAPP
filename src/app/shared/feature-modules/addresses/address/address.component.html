@@ -11,7 +11,15 @@
 
 <ion-content class="ion-paddding">
     <ion-list [formGroup]="addressFG">
-        <ion-item lines="">
+        <ion-item>
+            <ion-label>Address Type</ion-label>
+            <ion-select placeholder="Select Address Type" mode="md" interface="popover" formControlName="type">
+                <ion-select-option value="work">Work</ion-select-option>
+                <ion-select-option value="home">Home</ion-select-option>
+                <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
             <ion-label position="floating"> Address Line 1 </ion-label>
             <ion-textarea [autoGrow]="true" placeholder="Address Line 1" formControlName="addressLine1"></ion-textarea>
         </ion-item>
@@ -34,7 +42,7 @@
         </ion-item>
         <ion-item>
             <ion-label position="floating"> Country </ion-label>
-            <ion-input clearInput autocapitalize placeholder="Country" type="number"
+            <ion-input clearInput autocapitalize placeholder="Country" type="text"
                 formControlName="country"></ion-input>
         </ion-item>
     </ion-list>
@@ -45,7 +53,7 @@
         <ion-button (click)="dismiss()" slot="start" color="primary" fill="clear">
             cancel
         </ion-button>
-        <ion-button (click)="dismiss()" slot="end" color="primary" fill="solid">
+        <ion-button (click)="saveAddress()" slot="end" color="primary" fill="solid" [disabled]="addressFG?.invalid">
             Save Address
         </ion-button>
     </ion-toolbar>

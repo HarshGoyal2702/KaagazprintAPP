@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
-import { KaagazAddress } from 'kaagaz-models';
+import { AddressType, KaagazAddress } from 'kaagaz-models';
 
 @Component({
     selector: 'kaagaz-address',
@@ -17,20 +17,20 @@ export class AddressComponent implements OnInit {
 
     ngOnInit() {
         this.addressFG = this._fb.group({
-            addressLine1: [this.address.addressLine1 || null, []],
-            addressLine2: [this.address.addressLine2 || null],
-            city: [this.address.city || null],
-            state: [this.address.state || null],
-            pincode: [this.address.pincode || null],
-            country: [this.address.country || null],
+            addressLine1: [this.address.addressLine1 || null, [Validators.required]],
+            addressLine2: [this.address.addressLine2 || null, [Validators.required]],
+            city: [this.address.city || null, [Validators.required]],
+            state: [this.address.state || null, [Validators.required]],
+            pincode: [this.address.pincode || null, [Validators.required]],
+            country: [this.address.country || null, [Validators.required]],
             description: [this.address.description || null],
             fullAddress: [this.address.fullAddress || null],
-            type: [this.address.type || null],
+            type: [this.address.type || AddressType.HOME],
         });
     }
-    dismiss() { this._modalCT.dismiss(); }
 
-    saveAddress() {
+    dismiss(address: KaagazAddress = null) { this._modalCT.dismiss(address); }
 
-    }
+    saveAddress() { this.dismiss(this.addressFG.getRawValue()); }
+
 }

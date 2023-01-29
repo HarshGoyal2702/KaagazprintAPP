@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { User } from 'kaagaz-models';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,7 +9,10 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class SignUpPage implements OnInit {
 
-  constructor() { }
+  user: User;
+  constructor() {
+    this.user = new User();
+  }
 
   ngOnInit() {
   }

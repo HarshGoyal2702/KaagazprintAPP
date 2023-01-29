@@ -1,9 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>sign-up</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title slot="start">Sign Up</ion-title>
+        <ion-button size="small" slot="end" color="primary" fill="clear" routerDirection="root"
+            [routerLink]="['/login']">
+            Login
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="ion-paddding">
+    <kaagaz-user-profile [user]="user"></kaagaz-user-profile>
 </ion-content>
