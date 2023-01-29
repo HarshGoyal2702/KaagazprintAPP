@@ -35,3 +35,17 @@ body {
 body {
   margin: 0;
 }
+
+/** ********** CUSTOM COLOR ATTRIBUTES STARTS ********** */
+
+.ion-color-text {
+  --ion-color-base: var(--ion-text-color);
+  --ion-color-base-rgb: var(--ion-text-color-rgb);
+}
+
+.ion-color-sub-text {
+  --ion-color-base: var(--ion-sub-text-color);
+  --ion-color-base-rgb: var(--ion-sub-text-color-rgb);
+}
+
+/** ********** CUSTOM COLOR ATTRIBUTES ENDS ********** */

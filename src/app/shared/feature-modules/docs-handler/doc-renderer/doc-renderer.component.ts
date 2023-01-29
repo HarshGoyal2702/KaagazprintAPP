@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
+import { KaagazDocument } from 'kaagaz-models';
 
 @Component({
     selector: 'kaagaz-doc-renderer',
@@ -11,6 +11,7 @@ export class DocRendererComponent implements OnInit {
 
     @Input() file: KaagazDocument;
     @Input() handleFocus: boolean;
+    @Input() asProfileImage: boolean;
     @Output() fileFocus: EventEmitter<void> = new EventEmitter<void>();
     @Output() fileDelete: EventEmitter<void> = new EventEmitter<void>();
     constructor() { }

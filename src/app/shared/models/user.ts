@@ -14,4 +14,6 @@ export class User {
     role: number;
     updatedAt: string;
     userId: number
+    image: string;
+    emailId: string;
 }

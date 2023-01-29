@@ -8,8 +8,18 @@ const routes: Routes = [
     {
         path: '', component: HomePage, children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', loadChildren: () => import('../dashboard/dashboard.module').then(m => m.DashboardPageModule), canLoad: [LoginGuard] },
-            { path: 'order', loadChildren: () => import('../order/order.module').then(m => m.OrderPageModule), canLoad: [LoginGuard] },
+            {
+                path: 'dashboard', loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardPageModule),
+                canLoad: [LoginGuard]
+            },
+            {
+                path: 'order', loadChildren: () => import('./order/order.module').then(m => m.OrderPageModule),
+                canLoad: [LoginGuard]
+            },
+            {
+                path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule),
+                canLoad: [LoginGuard]
+            },
         ], canActivateChild: [LoginGuard]
     }
 ];

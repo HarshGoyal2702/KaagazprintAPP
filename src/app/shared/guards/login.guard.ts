@@ -13,14 +13,17 @@ export class LoginGuard implements CanLoad, CanActivate {
     canLoad(route: Route) {
         return this._isLogin();
     }
+
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         return this._isLogin();
     }
+
     canActivateChild(
         next: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
         return this._isLogin();
     }
+
     private _isLogin(): boolean {
         return true;
         // if (this._core.user && this._core.authToken) {

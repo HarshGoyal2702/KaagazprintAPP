@@ -1,0 +1,58 @@
+<ion-grid class="ion-no-padding" [formGroup]="userProfileFG">
+    <ion-row>
+        <ion-col size="12">
+            <div class="flex-col ion-align-items-center">
+                <kaagaz-docs-handler [asProfileImage]="true" formControlName="image"></kaagaz-docs-handler>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label position="floating">Full Name</ion-label>
+                <ion-input clearInput autocapitalize formControlName="name"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label position="floating"> Phone Number </ion-label>
+                <ion-input clearInput autocapitalize type="number" formControlName="phoneNumber"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label position="floating"> Email </ion-label>
+                <ion-input clearInput autocapitalize type="email" pattern formControlName="emailId"></ion-input>
+            </ion-item>
+        </ion-col>
+        <ion-col size="12">
+            <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select placeholder="Select Gender" mode="ios" interface="popover">
+                    <ion-select-option value="female">Female</ion-select-option>
+                    <ion-select-option value="male">Male</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <ion-toolbar>
+                <ion-title slot="start" class="ion-no-padding ion-text-left"> Saved Addresses </ion-title>
+                <ion-button slot="end" size="small" color="primary" class="ion-no-margin" fill="clear"
+                    kaagazAddressAnchor [presentingEL]="hostEL">
+                    Add New Address
+                </ion-button>
+            </ion-toolbar>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12" class="ion-text-center">
+            <ion-text color="danger"> No Addresses Saved Yet! </ion-text>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+        </ion-col>
+    </ion-row>
+</ion-grid>

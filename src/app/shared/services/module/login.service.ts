@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpRequestService } from '../core/http-request.service';
-import { APIURLS } from '../models/api-urls';
-import { Response } from '../models/http-response';
-import { User, UserRes } from '../models/user';
+import { map, tap } from 'rxjs/operators';
+import { HttpRequestService } from 'kaagaz-core';
+import { User, UserRes, APIURLS, Response } from 'kaagaz-models';
+import { ToastService } from 'kaagaz-services';
 
 @Injectable()
 export class LoginService {
 
-    constructor(private _http: HttpRequestService) { }
+    constructor(private _http: HttpRequestService, private _toastSer: ToastService) { }
     /**
      * Generate OTP by phonenumber.
-     * 
      * @phoneNumber required to generate the OTP.
      */
     generateOTP(phoneNumber: string): Observable<boolean> {
@@ -30,10 +28,14 @@ export class LoginService {
         const body = { otp: otp, phoneNumber: phoneNumber }
         const url = APIURLS.VERIFY_OTP;
         return this._http.postResponse<UserRes>(UserRes, url, body).pipe(
-            map((res: UserRes) => {
-                console.log(res);
-                return !res.error && res.data ? res.data : null;
-            })
+            tap((res: UserRes) => { console.log(res); }),
+            tap((res: UserRes) => {
+                this._toastSer.runToast({
+                    error: res.error, code: res.code,
+                    message: `${res.error ? `${res.message}!! Login Failed, Please try again..` : 'Logged In Successfully!!'}`
+                });
+            }),
+            map((res: UserRes) => { return !res.error && res.data ? res.data : null; })
         );
     }
 }

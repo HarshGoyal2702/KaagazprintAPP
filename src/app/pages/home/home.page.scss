@@ -1,11 +1,4 @@
-.bottom-list {
-  left: 0;
-  bottom: 0;
-  position: absolute;
-  .theme-toggler {
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    position: absolute;
-  }
+.logout,
+.theme-toggler {
+  cursor: pointer;
 }

@@ -12,7 +12,13 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": ["es2018", "dom"]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "kaagaz-core": ["src/app/shared/core"],
+      "kaagaz-models": ["src/app/shared/models"],
+      "kaagaz-services": ["src/app/shared/services"],
+      "kaagaz-feature-modules": ["src/app/shared/feature-modules"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

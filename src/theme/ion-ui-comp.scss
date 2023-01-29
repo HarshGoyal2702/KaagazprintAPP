@@ -5,10 +5,16 @@ ion-header {
     height: unset !important;
     background-image: none !important;
   }
+  ion-toolbar {
+    --background: var(--ion-color-light);
+  }
 }
 ion-footer {
   &::before {
     background-image: none !important;
+  }
+  ion-toolbar {
+    --background: var(--ion-color-light);
   }
 }
 /** **************** ION-HEADER & ION-FOOTER ENDS **************** */
@@ -89,3 +95,39 @@ ion-button {
 }
 
 /** **************** ION-BUTTON ENDS **************** */
+
+/** **************** ION-ITEM STARTS **************** */
+
+ion-item {
+  // --inner-padding-end: 0px;
+  // --inner-padding-start: 0px;
+
+  ion-label {
+    &.label-floating {
+      color: var(--ion-sub-text-color) !important;
+    }
+  }
+  ion-input {
+  }
+}
+
+/** **************** ION-ITEM ENDS **************** */
+
+/** **************** ION-MODAL STARTS **************** */
+
+ion-modal {
+  ion-content {
+    --background: var(--ion-color-light);
+  }
+}
+
+/** **************** ION-MODAL ENDS **************** */
+
+/** **************** ION-TOOLBAR STARTS **************** */
+
+ion-toolbar {
+  // --background: var(--ion-color-light);
+  // --background: transparent;
+}
+
+/** **************** ION-TOOLBAR ENDS **************** */

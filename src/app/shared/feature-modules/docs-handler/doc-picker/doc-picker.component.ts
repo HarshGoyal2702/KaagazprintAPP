@@ -21,6 +21,7 @@ import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
 export class DocPickerComponent implements OnInit {
 
     @Input() multiple: boolean;
+    @Input() asProfileImage: boolean;
     private _fileInputEL: HTMLInputElement;
     @Output() fileSelected: EventEmitter<KaagazDocument> = new EventEmitter<KaagazDocument>();
     constructor(@Inject(DOCUMENT) private doc: Document, private _plt: Platform,

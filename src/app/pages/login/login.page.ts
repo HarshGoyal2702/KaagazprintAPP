@@ -1,9 +1,9 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { IonSlides, NavController, ToastController } from '@ionic/angular';
-import { CoreService } from 'src/app/shared/core/core.service';
-import { User } from 'src/app/shared/models/user';
-import { LoginService } from 'src/app/shared/services/login.service';
+import { IonSlides, NavController } from '@ionic/angular';
+import { CoreService } from 'kaagaz-core';
+import { User } from 'kaagaz-models';
+import { LoginService, ToastService } from 'kaagaz-services';
 
 @Component({
     selector: 'app-login',
@@ -21,8 +21,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     phoneNumber: FormControl = new FormControl('', [Validators.required,
     Validators.maxLength(10), Validators.minLength(10)]);
     constructor(private _login: LoginService, private _core: CoreService,
-        private _router: NavController, private _toast: ToastController,
-        private _cdr: ChangeDetectorRef) { }
+        private _router: NavController, private _cdr: ChangeDetectorRef) { }
 
     ngOnInit() { }
     ngAfterViewInit() { this._slides.lockSwipes(true); }
@@ -32,8 +31,6 @@ export class LoginPage implements OnInit, AfterViewInit {
         this._slides.lockSwipes(true);
     }
     login() {
-        // this._router.navigateRoot(['/kaagaz']);
-        console.log('loggin in');
         this.loader = true;
         this._login.generateOTP(this.phoneNumber.value).subscribe(
             (success: boolean) => {
@@ -56,12 +53,6 @@ export class LoginPage implements OnInit, AfterViewInit {
                     this._router.navigateRoot(['/kaagaz']);
                 } else {
                     this.otp.reset();
-                    this._toast.create({
-                        message: 'Entered OTP is not valid.',
-                        duration: 5000,
-                        position: 'top',
-                        color: 'danger'
-                    }).then(el => el.present());
                 }
             },
             (error) => { },

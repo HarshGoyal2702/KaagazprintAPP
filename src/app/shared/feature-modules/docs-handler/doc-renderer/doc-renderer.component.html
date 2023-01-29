@@ -1,7 +1,5 @@
-<div class="doc flex-col">
-    <span class="preview flex-col" docs-opener [file]="file" [view]="'with-player'">
-        <!-- <ion-icon class="large" name="document"></ion-icon> -->
-    </span>
+<div class="doc flex-col" *ngIf="!asProfileImage;else profileImageTP">
+    <span class="preview flex-col" docs-opener [file]="file" [view]="'with-player'"></span>
     <span class="status actions flex-row">
         <ion-icon class="large" name="document"></ion-icon>
         <p class="name"> {{ file?.fileName }} </p>
@@ -17,3 +15,6 @@
         </ion-buttons>
     </span>
 </div>
+<ng-template #profileImageTP>
+    <span class="preview profile flex-col" docs-opener [file]="file" [view]="'with-player'"></span>
+</ng-template>

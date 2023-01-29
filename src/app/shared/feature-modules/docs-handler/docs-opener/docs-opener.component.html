@@ -38,9 +38,9 @@
         </ng-container>
     </ng-container>
     <ng-container *ngIf="view === 'with-player'">
-        <div class="loader" *ngIf="loader">
+        <!-- <div class="loader" *ngIf="loader">
             <ion-spinner name="lines" color="primary"></ion-spinner>
-        </div>
+        </div> -->
         <ng-container [ngSwitch]="fileType">
             <ng-container *ngSwitchCase="'pdf'">
                 <div class="icon-view flex-col">
