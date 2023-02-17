@@ -1,0 +1,28 @@
+<div class="container ion-padding-bottom" [formGroup]="pagesFG">
+    <ion-item lines="none" class="ion-no-padding">
+        <ion-checkbox class="ion-no-margin" slot="start" formControlName="all"> </ion-checkbox>
+        <ion-label class="ion-no-margin ion-margin-start"> All Pages </ion-label>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+        <ion-checkbox class="ion-no-margin" slot="start" formControlName="range"></ion-checkbox>
+        <ion-label class="ion-no-margin ion-margin-start"> Ranges </ion-label>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding ion-no-margin" formGroupName="pagesRange">
+        <ion-label slot="start" class="ion-no-margin"> Ranges From </ion-label>
+        <ion-item lines="full" class="ion-no-padding" slot="end">
+            <ion-input formControlName="start" class="ion-text-center"></ion-input>
+        </ion-item>
+        <ion-text class="ion-no-margin" slot="end">to</ion-text>
+        <ion-item lines="full" class="ion-no-padding ion-no-margin" slot="end">
+            <ion-input formControlName="end" class="ion-text-center"></ion-input>
+        </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+        <ion-checkbox class="ion-no-margin" slot="start" formControlName="selected"></ion-checkbox>
+        <ion-label class="ion-no-margin ion-margin-start"> Selected Pages </ion-label>
+    </ion-item>
+    <ion-item lines="full" class="ion-no-padding">
+        <ion-label position="floating" class="ion-no-margin"> Selected </ion-label>
+        <ion-input formControlName="selectedPages" placeholder="hint - 1, 4, 5 or 5-9"></ion-input>
+    </ion-item>
+</div>

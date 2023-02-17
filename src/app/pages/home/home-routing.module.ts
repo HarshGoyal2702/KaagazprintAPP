@@ -13,7 +13,7 @@ const routes: Routes = [
                 canLoad: [LoginGuard]
             },
             {
-                path: 'order', loadChildren: () => import('./order/order.module').then(m => m.OrderPageModule),
+                path: 'orders', loadChildren: () => import('./orders/orders.module').then(m => m.OrdersPageModule),
                 canLoad: [LoginGuard]
             },
             {
@@ -21,6 +21,10 @@ const routes: Routes = [
                 canLoad: [LoginGuard]
             },
         ], canActivateChild: [LoginGuard]
+    },
+    {
+        path: 'orders',
+        loadChildren: () => import('./orders/orders.module').then(m => m.OrdersPageModule)
     }
 ];
 

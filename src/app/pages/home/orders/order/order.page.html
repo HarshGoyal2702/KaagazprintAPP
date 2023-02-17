@@ -1,0 +1,92 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-menu-button slot="start" (click)="toggleMenu()"></ion-menu-button>
+        <ion-title>Order</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="container" [formGroup]="orderFG">
+        <div class="doc-picker ion-margin">
+            <!-- (fileReady)="onFileUploaded($event)" -->
+            <kaagaz-docs-handler [multiple]="false" formControlName="fileToPrintUrl"></kaagaz-docs-handler>
+        </div>
+        <div class="order-form ion-padding-start ion-padding-end">
+            <ul class="cards flex-row">
+                <li class="kaagaz-card">
+                    <ul class="fields flex-col">
+                        <li class="field">
+                            <kaagaz-form-field>
+                                <ion-item class="ion-no-padding" lines="full">
+                                    <ion-text slot="start">
+                                        <h4> Copies </h4>
+                                    </ion-text>
+                                    <kaagaz-copies formControlName="copies" slot="end"></kaagaz-copies>
+                                    <ion-text slot="end" color="sub-text ion-no-margin">
+                                        copies
+                                    </ion-text>
+                                </ion-item>
+                            </kaagaz-form-field>
+                        </li>
+                        <li class="field">
+                            <ion-item lines="full">
+                                <kaagaz-pages formControlName="pagesToPrint" class="ion-no-margin"
+                                    slot="start"></kaagaz-pages>
+                            </ion-item>
+                        </li>
+                        <li class="field">
+                            <ion-item class="ion-no-padding" lines="full">
+                                <ion-text slot="start">
+                                    <h4> Paper Size </h4>
+                                </ion-text>
+                                <kaagaz-page-size formControlName="pageType" slot="end"></kaagaz-page-size>
+                            </ion-item>
+                        </li>
+                        <li class="field">
+                            <ion-item class="ion-no-padding" lines="none">
+                                <ion-text slot="start">
+                                    <h4> Orientation </h4>
+                                </ion-text>
+                                <kaagaz-orientation formControlName="pageOrientation" slot="end"></kaagaz-orientation>
+                            </ion-item>
+                        </li>
+                    </ul>
+                </li>
+                <li class="kaagaz-card ion-margin-start">
+                    <ul class="fields">
+                        <li class="field">
+                            <ion-item class="ion-no-padding" lines="full">
+                                <ion-text slot="start">
+                                    <h4> Page Layout </h4>
+                                </ion-text>
+                                <kaagaz-page-layout formControlName="pageLayout" slot="end"></kaagaz-page-layout>
+                            </ion-item>
+                        </li>
+                        <li class="field">
+                            <ion-item class="ion-no-padding" lines="full">
+                                <ion-text slot="start">
+                                    <h4> Print Type </h4>
+                                </ion-text>
+                                <kaagaz-print-side-type formControlName="printType" slot="end"></kaagaz-print-side-type>
+                            </ion-item>
+                        </li>
+                        <li class="field">
+                            <ion-item class="ion-no-padding" lines="full">
+                                <ion-text slot="start">
+                                    <h4> Collate/Staple/Group(H) </h4>
+                                </ion-text>
+                                <kaagaz-collate-type formControlName="collateType" slot="end"></kaagaz-collate-type>
+                            </ion-item>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button slot="end" color="primary" fill="solid" (click)="reviewOrder()"> Submit Order </ion-button>
+    </ion-toolbar>
+</ion-footer>

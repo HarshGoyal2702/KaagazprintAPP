@@ -26,7 +26,7 @@ export class ToastService {
             duration: requisites.error ? 5000 : 3000,
             position: 'bottom',
             ...options
-        }
+        };
         const toastEL: HTMLIonToastElement = await this._toast.create(opts);
         await toastEL.present();
     }

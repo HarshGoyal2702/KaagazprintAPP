@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
 
     public pages = [
         { title: 'Dashboard', url: '/kaagaz/dashboard', icon: 'dashboard' },
-        { title: 'Order', url: '/kaagaz/order', icon: 'print' },
+        { title: 'Orders', url: '/kaagaz/orders', icon: 'print' },
         { title: 'Profile', url: '/kaagaz/profile', icon: 'account_circle' },
     ];
     constructor(private _renderer: Renderer2, private _core: CoreService,
