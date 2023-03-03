@@ -1,5 +1,6 @@
 <ion-item lines="none">
-  <ion-select placeholder="Collate/Staple/Group(H)" mode="md" interface="popover">
+  <ion-select placeholder="Collate/Staple/Group(H)" mode="md" interface="popover" [formControl]="inputCT"
+    (ionBlur)="onTouched()" (ionChange)="onChange()">
     <ion-select-option [value]="1">Collate</ion-select-option>
     <ion-select-option [value]="2">Staple</ion-select-option>
     <ion-select-option [value]="3">Group(H)</ion-select-option>

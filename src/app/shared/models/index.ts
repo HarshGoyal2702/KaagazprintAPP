@@ -5,3 +5,4 @@ export * from './login-otp';
 export * from './user';
 export * from './kaagaz-address';
 export * from './kaagaz-order';
+export * from './kaagaz-storage-keys';

@@ -1,7 +1,8 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MenuController, NavController } from '@ionic/angular';
-import { KaagazDocument } from 'src/app/shared/models/kaagaz-document';
+import { kaagazPageLayout, KaagazDocument, KaagazPageOrientation, KaagazPageType, KaagazPrintType, KaagazOrder } from 'kaagaz-models';
+import { OrdersService } from 'kaagaz-services';
 
 @Component({
     selector: 'kaagaz-order',
@@ -15,24 +16,31 @@ export class OrderPage implements OnInit {
     orderFG: FormGroup;
     docs: KaagazDocument[] = [];
     constructor(private _fb: FormBuilder, private _menu: MenuController,
-        private _cdr: ChangeDetectorRef, private _router: NavController) { }
+        private _cdr: ChangeDetectorRef, private _router: NavController,
+        private _ordersSer: OrdersService) {
+    }
 
     ngOnInit() {
         this.orderFG = this._fb.group({
             copies: [null, [Validators.required]],
-            pageType: [null, [Validators.required]],
-            printType: [null, [Validators.required]],
-            pageLayout: [null, [Validators.required]],
+            pageType: [KaagazPageType.A4, [Validators.required]],
+            printType: [KaagazPrintType.ONE_SIDED, [Validators.required]],
+            pageLayout: [kaagazPageLayout.ONE_on_ONE, [Validators.required]],
             collateType: [null, [Validators.required]],
-            pagesToPrint: [null, [Validators.required]],
-            fileToPrintUrl: [null, [Validators.required]],
-            pageOrientation: [null, [Validators.required]],
+            pagesToPrint: [{ all: true }, [Validators.required]],
+            fileToPrintUrl: [null],
+            pageOrientation: [KaagazPageOrientation.PORTRAIT, [Validators.required]],
         });
+        this._ordersSer.getCurrentOrder().then((order: KaagazOrder) => {
+            if (order) { this.orderFG.patchValue(order); }
+        })
     }
+    voidFn() { }
     toggleMenu() { this._menu.toggle(); }
     onFileUploaded(file: KaagazDocument) { }
     reviewOrder() {
-        // this._router.navigateForward(['/kaagaz/orders/review']);
         console.log(this.orderFG.getRawValue());
+        this._ordersSer.setCurrentOrder(this.orderFG.getRawValue());
+        this._router.navigateForward(['/kaagaz/orders/review']);
     }
 }

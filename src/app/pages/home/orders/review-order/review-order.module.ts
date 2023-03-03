@@ -7,14 +7,14 @@ import { IonicModule } from '@ionic/angular';
 import { ReviewOrderPageRoutingModule } from './review-order-routing.module';
 
 import { ReviewOrderPage } from './review-order.page';
+import { PrintSettingsModule } from 'kaagaz-feature-modules';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    IonicModule,
+    IonicModule, PrintSettingsModule,
     ReviewOrderPageRoutingModule
   ],
   declarations: [ReviewOrderPage]
 })
-export class ReviewOrderPageModule {}
+export class ReviewOrderPageModule { }

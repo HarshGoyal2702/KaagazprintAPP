@@ -1,0 +1,40 @@
+ion-toolbar,
+ion-item,
+ion-content {
+  --background: rgba(var(--kaagaz-app-background-rgb), 0.6);
+}
+ion-thumbnail {
+  margin: 0px;
+  width: 96px;
+  height: 96px;
+  img {
+    object-fit: contain;
+  }
+}
+
+.container {
+  .cards {
+    > li.card.kaagaz-card {
+      padding: 16px;
+      border-radius: 6px !important;
+      .field {
+        align-items: center;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .file {
+        .title {
+          flex: 1;
+          padding-left: 6px;
+        }
+      }
+      .seperator {
+        margin: 8px 0px;
+        border: 1px dashed var(--kaagaz-divider-color);
+      }
+      .price {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

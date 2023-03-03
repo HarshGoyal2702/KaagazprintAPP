@@ -118,6 +118,20 @@ $app-theme: mat.define-light-theme(
 
 /** Ionic CSS Variables **/
 :root {
+  --kaagaz-app-background: #f0eff3;
+  --kaagaz-app-background-rgb: 240, 239, 243;
+
+  --kaagaz-input-border: #8c8c8c;
+  --kaagaz-disable-color: #999999;
+  --kaagaz-border-color: #d9d9d9;
+  --kaagaz-divider-color: #f0f0f0;
+  --kaagaz-active-item-color: #626d8a;
+
+  --kaagaz-global-shadow-md: 0 5px 40px rgba(0, 0, 0, 0.2);
+  --kaagaz-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --kaagaz-global-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
   /** primary **/
   --ion-color-primary: #07a559;
   --ion-color-primary-rgb: 7, 165, 89;

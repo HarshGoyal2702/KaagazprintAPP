@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { KaagazOrder } from 'kaagaz-models';
+import { OrdersService } from 'kaagaz-services';
 
 @Component({
   selector: 'kaagaz-review-order',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewOrderPage implements OnInit {
 
-  constructor() { }
+  order$: Promise<KaagazOrder>;
+  constructor(private _ordersSer: OrdersService) { }
 
   ngOnInit() {
+    this.order$ = this._ordersSer.getCurrentOrder();
   }
 
 }

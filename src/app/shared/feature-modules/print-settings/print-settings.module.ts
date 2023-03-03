@@ -10,9 +10,15 @@ import { PageLayoutComponent } from './page-layout/page-layout.component';
 import { PageSizeComponent } from './page-size/page-size.component';
 import { PagesComponent } from './pages/pages.component';
 import { PrintSideTypeComponent } from './print-side-type/print-side-type.component';
+import { PageCollatePipe } from './collate.pipe';
+import { PrintTypePipe } from './print-type.pipe';
+import { PageLayoutPipe } from './page-layout.pipe';
+import { PageOrientationPipe } from './orientation.pipe';
+import { PaperSizePipe } from './paper-size.pipe';
 
 const declarations: Array<Type<any> | any[]> = [CopiesComponent, BindingLocationComponent, CollateTypeComponent, OrientationComponent,
-  PageLayoutComponent, PageSizeComponent, PagesComponent, PrintSideTypeComponent]
+  PageLayoutComponent, PageSizeComponent, PagesComponent, PrintSideTypeComponent, PageCollatePipe, PrintTypePipe, PageLayoutPipe,
+  PageOrientationPipe, PaperSizePipe]
 
 @NgModule({
   declarations: declarations,

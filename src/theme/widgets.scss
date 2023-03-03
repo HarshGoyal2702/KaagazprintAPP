@@ -44,8 +44,19 @@
 .kaagaz-card {
   @include flex-col;
   border-radius: 6px;
+  background: var(--ion-color-light);
   // border: 1px solid var(--ion-color-primary);
-  box-shadow: 0px 0px 2px 2px rgb(140 140 140 / 27%);
+  // box-shadow: 0px 0px 2px 2px rgb(140 140 140 / 27%);
+
+  &.shadow-lw {
+    box-shadow: var(--kaagaz-global-shadow-lw);
+  }
+  &.shadow-md {
+    box-shadow: var(--kaagaz-global-shadow-md);
+  }
+  &.shadow-tl {
+    box-shadow: var(--kaagaz-global-shadow-tl);
+  }
 }
 
 .padding-4 {

@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, forwardRef, OnInit } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { KaagazPageType } from 'kaagaz-models';
 
 @Component({
   selector: 'kaagaz-page-size',
@@ -8,19 +9,23 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => PageSizeComponent), multi: true }]
 })
+
 export class PageSizeComponent implements OnInit, ControlValueAccessor {
 
+  private _onTouched: () => void;
+  private _onChange: (_: any) => void;
+
+  inputCT: FormControl = new FormControl();
   constructor() { }
 
   ngOnInit() { }
 
-  writeValue(obj: any): void {
+  registerOnTouched(fn: any): void { this._onTouched = fn; }
+  registerOnChange(fn: (_: any) => void): void { this._onChange = fn; }
+  writeValue(value: KaagazPageType): void { this.inputCT.setValue(value); }
 
-  }
-  registerOnChange(fn: any): void {
-
-  }
-  registerOnTouched(fn: any): void {
-
+  onTouched() { if (this._onTouched) { this._onTouched(); } }
+  onChange() {
+    if (this._onChange) { this._onChange(this.inputCT.value); }
   }
 }
