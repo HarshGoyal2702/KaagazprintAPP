@@ -1,4 +1,19 @@
-<div class="doc flex-col" *ngIf="!asProfileImage;else profileImageTP">
+<div class="doc flex-col">
+    <span class="preview flex-col" docs-opener [file]="file" [view]="loading ? 'icon-only' :'with-player'"></span>
+    <span class="progress flex-col" *ngIf="(file?.progress < 100 && file?.progress > 0) || loading">
+        <mat-progress-spinner color="primary" [mode]="((file?.progress <= 10)) ? 'indeterminate' : 'determinate'"
+            [value]="file?.progress" strokeWidth="1.5" [diameter]="50">
+        </mat-progress-spinner>
+    </span>
+    <span class="actions flex-col" *ngIf="file?.fail && !loading">
+        <ion-buttons>
+            <ion-button fill="clear" color="primary" (click)="upload()">
+                <ion-icon name="share" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </span>
+</div>
+<!-- <div class="doc flex-col" *ngIf="!asProfileImage;else profileImageTP">
     <span class="preview flex-col" docs-opener [file]="file" [view]="'with-player'"></span>
     <span class="status actions flex-row">
         <ion-icon class="large" name="document"></ion-icon>
@@ -17,4 +32,4 @@
 </div>
 <ng-template #profileImageTP>
     <span class="preview profile flex-col" docs-opener [file]="file" [view]="'with-player'"></span>
-</ng-template>
+</ng-template> -->

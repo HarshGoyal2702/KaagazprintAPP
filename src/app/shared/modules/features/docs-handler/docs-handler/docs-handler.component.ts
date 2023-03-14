@@ -30,6 +30,7 @@ export class DocsHandlerComponent implements OnInit {
     onFileSelection(file: KaagazDocument) {
         if (!this.multiple) { this.savedFiles.length = 0; }
         this.savedFiles.push(file);
+        this._cdr.markForCheck();
     }
 
     onServerUrlFetched(file: KaagazDocument, fileIndex: number) {
@@ -40,6 +41,7 @@ export class DocsHandlerComponent implements OnInit {
         } else {
             if (this.onChange) { this.onChange(file.fileUrl); }
         }
+        this._cdr.markForCheck();
     }
 
     onFileFocus(file: KaagazDocument) { this.fileFocus.emit(file); }

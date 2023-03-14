@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { KaagazPageType } from '../../models/kaagaz-order';
+import { KaagazPageType } from 'kaagaz-models';
 
 @Pipe({
     name: 'paperSize'

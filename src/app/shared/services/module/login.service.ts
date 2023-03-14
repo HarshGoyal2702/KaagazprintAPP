@@ -28,7 +28,6 @@ export class LoginService {
         const body = { otp: otp, phoneNumber: phoneNumber }
         const url = APIURLS.VERIFY_OTP;
         return this._http.postResponse<UserRes>(UserRes, url, body).pipe(
-            tap((res: UserRes) => { console.log(res); }),
             tap((res: UserRes) => {
                 this._toastSer.runToast({
                     error: res.error, code: res.code,

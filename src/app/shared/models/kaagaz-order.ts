@@ -1,3 +1,4 @@
+import { KaagazDocument } from "./kaagaz-document";
 
 export enum KaagazPageType {
     A4 = 1,
@@ -46,9 +47,9 @@ export enum KaagazCollateType {
 
 export class KaagazOrder {
     copies: number;
-    fileToPrintUrl: string;
     pageType: KaagazPageType;
     printType: KaagazPrintType;
+    fileToPrint: KaagazDocument;
     pageLayout: kaagazPageLayout;
     collateType: KaagazCollateType;
     pagesToPrint: KaagazPagesToPrint;

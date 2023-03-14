@@ -6,11 +6,13 @@ export class KaagazDocument {
     type: string;
     ext: string;
     fileUrl: string;
+    numberOfPage: number;
     formData: FormData;
     focus: boolean;
     progress: number = 0;
     fileSize: string;
     thumbnailUrl: string;
+    pages: number;
 
     constructor(name: string, localUrl?: string, type?: string, ext?: string, size?: string, fileUrl?: string) {
         this.fileName = name;

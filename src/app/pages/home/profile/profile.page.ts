@@ -17,7 +17,6 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.user);
   }
   toggleMenu() { this._menu.toggle(); }
 

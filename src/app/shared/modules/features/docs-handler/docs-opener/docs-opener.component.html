@@ -1,4 +1,4 @@
-<ng-container *ngIf="(file?.ext || (file?.fileUrl | docType)) as fileType">
+<ng-container *ngIf="((file?.ext | lowercase) || (file?.fileUrl | docType)) as fileType">
     <ng-container *ngIf="view === 'icon-only'">
         <ng-container [ngSwitch]="fileType">
             <ng-container *ngSwitchCase="'pdf'">

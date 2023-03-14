@@ -20,7 +20,6 @@ export class AddressRendererComponent implements OnInit {
 
     deleteAdd() { this.addressDelete.emit(); }
     onAddressChange(address: KaagazAddress) {
-        console.log(address);
         this.address = address;
         this.addressChange.emit(this.address);
     }

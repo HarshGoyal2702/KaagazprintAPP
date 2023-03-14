@@ -7,14 +7,13 @@ import { IonicModule } from '@ionic/angular';
 import { OrderPageRoutingModule } from './order-routing.module';
 
 import { OrderPage } from './order.page';
-import { DocsHandlerModule } from 'src/app/shared/feature-modules/docs-handler/docs-handler.module';
-import { PrintSettingsModule } from 'src/app/shared/feature-modules/print-settings/print-settings.module';
 import { KaagazFormsFieldModule } from 'kaagaz-widgets';
+import { DocsHandlerModule, OrdersModule, PrintSettingsModule } from 'kaagaz-feature-modules';
 
 @NgModule({
   imports: [
     CommonModule, IonicModule, ReactiveFormsModule, KaagazFormsFieldModule,
-    OrderPageRoutingModule, DocsHandlerModule, PrintSettingsModule
+    OrderPageRoutingModule, DocsHandlerModule, PrintSettingsModule, OrdersModule
   ],
   declarations: [OrderPage]
 })

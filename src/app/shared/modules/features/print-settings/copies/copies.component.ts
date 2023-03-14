@@ -29,7 +29,6 @@ export class CopiesComponent implements OnInit, ControlValueAccessor {
 
     onTouched() { if (this._onTouched) { this._onTouched(); } }
     onChange() {
-        console.log(this.inputCT.value);
         if (this._onChange) { this._onChange(this.inputCT.value); }
     }
 

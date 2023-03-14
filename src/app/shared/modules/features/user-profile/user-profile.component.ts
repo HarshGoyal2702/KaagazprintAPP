@@ -16,7 +16,6 @@ export class UserProfileComponent implements OnInit {
     constructor(private _fb: FormBuilder, public hostEL: ElementRef) { }
 
     ngOnInit() {
-        console.log(this.user);
         this.userProfileFG = this._fb.group({
             image: [this.user.image || ''],
             name: [this.user.name || '', [Validators.required]],
@@ -31,15 +30,10 @@ export class UserProfileComponent implements OnInit {
     get addressesFC(): FormControl { return this.userProfileFG.get('addresses') as FormControl; }
 
     addAddress(address: KaagazAddress) {
-        console.log(address);
-        console.log(this.addressesFC);
         this.addressesFC.value.push(address);
-        console.log(this.userProfileFG.getRawValue());
     }
     deleteAddress(index: number) {
-        console.log('index to be deleted -', index);
         (this.addressesFC.value as []).splice(index, 1);
-        console.log(this.addressesFC.value);
     }
     onAddressEdit(address: KaagazAddress, index: number) {
         this.addressesFC.value[index] = address;
