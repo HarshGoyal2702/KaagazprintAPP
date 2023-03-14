@@ -3,7 +3,7 @@
 
 // #07A559
 
-@use '~@angular/material' as mat;
+@use "~@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -16,16 +16,16 @@
 // hue. Available color palettes: https://material.io/design/color/
 
 $app-primary-palette: (
-  50: #e3f2ff,
-  100: #bdddff,
-  200: #91c8ff,
-  300: #64b2ff,
-  400: #45a1ff,
-  500: #3290ff,
-  600: #3881ff,
-  700: #3a6eea,
-  800: #3a5cd7,
-  900: #3939b7,
+  50: #e5f6ec,
+  100: #c2e8cf,
+  200: #99d9b1,
+  300: #6dcb92,
+  400: #49c07a,
+  500: #14b463,
+  600: #07a559,
+  700: #00934c,
+  800: #008141,
+  900: #00622c,
   contrast: (
     50: rgba(#ffffff, 0.87),
     100: rgba(#ffffff, 0.87),
@@ -118,6 +118,35 @@ $app-theme: mat.define-light-theme(
 
 /** Ionic CSS Variables **/
 :root {
+  --kaagaz-app-background: #f0eff3;
+  --kaagaz-app-background-rgb: 240, 239, 243;
+
+  --kaagaz-input-border: #8c8c8c;
+  --kaagaz-disable-color: #999999;
+  --kaagaz-border-color: #d9d9d9;
+  --kaagaz-divider-color: #f0f0f0;
+  --kaagaz-active-item-color: #626d8a;
+
+  --kaagaz-color: #f4f4f4;
+  --kaagaz-color-rgb: 244, 244, 244;
+  --kaagaz-color-step-0: #f5f5f5;
+  --kaagaz-color-step-0-rgb: 245, 245, 245;
+  --kaagaz-color-step-50: #f0f0f0;
+  --kaagaz-color-step-50-rgb: 240, 240, 240;
+  --kaagaz-color-step-100: #f8f8f8;
+  --kaagaz-color-step-100-rgb: 248, 248, 248;
+  --kaagaz-color-step-150: #dee4ec;
+  --kaagaz-color-step-150-rgb: 222, 228, 236;
+  --kaagaz-color-step-200: #626d8a;
+  --kaagaz-color-step-200-rgb: 98, 109, 138;
+  --kaagaz-color-step-250: #999999;
+  --kaagaz-color-step-250-rgb: 153, 153, 153;
+
+  --kaagaz-global-shadow-md: 0 5px 40px rgba(0, 0, 0, 0.2);
+  --kaagaz-global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --kaagaz-global-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
   /** primary **/
   --ion-color-primary: #07a559;
   --ion-color-primary-rgb: 7, 165, 89;
@@ -125,6 +154,7 @@ $app-theme: mat.define-light-theme(
   --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #06914e;
   --ion-color-primary-tint: #20ae6a;
+  --ion-color-primary-tint-rgb: 32, 174, 106;
 
   --ion-color-secondary: #50b4be;
   --ion-color-secondary-rgb: 80, 180, 190;
@@ -168,7 +198,7 @@ $app-theme: mat.define-light-theme(
   --ion-color-medium-shade: #808289;
   --ion-color-medium-tint: #9d9fa6;
 
-  --ion-color-light: #f4f5f8;
+  --ion-color-light: #ffffff;
   --ion-color-light-rgb: 244, 245, 248;
   --ion-color-light-contrast: #000000;
   --ion-color-light-contrast-rgb: 0, 0, 0;
@@ -178,8 +208,10 @@ $app-theme: mat.define-light-theme(
   --ion-background-color: #ffffff;
   --ion-background-color-rgb: 255, 255, 255;
 
-  --ion-text-color: #000000;
-  --ion-text-color-rgb: 0, 0, 0;
+  --ion-text-color: #262626;
+  --ion-text-color-rgb: 38, 38, 38;
+  --ion-sub-text-color: #8c8c8c;
+  --ion-sub-text-color-rgb: 140, 140, 140;
 
   --ion-color-step-50: #f2f2f2;
   --ion-color-step-100: #e6e6e6;
@@ -213,12 +245,18 @@ $app-theme: mat.define-light-theme(
   --ion-font-family: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
   --ion-default-font: -apple-system, BlinkMacSystemFont, "Roboto", sans-serif;
   ion-modal {
-    --ion-background-color: var(--ion-color-step-100);
-    --ion-toolbar-background: var(--ion-color-step-150);
+    --ion-background-color: var(--ion-color-light);
+    --ion-toolbar-background: var(--ion-color-light);
     --ion-toolbar-border-color: var(--ion-color-step-250);
   }
+  ion-content {
+    // --background: var(--ion-color-light);
+  }
   ion-label {
-    --color: var(--ion-color-step-450) !important;
+    --color: var(--ion-text-color);
+  }
+  ion-slides {
+    height: 100%;
   }
 }
 
@@ -298,6 +336,9 @@ html.md {
       --ion-toolbar-background: var(--ion-color-step-150);
       --ion-toolbar-border-color: var(--ion-color-step-250);
     }
+    ion-content {
+      // --background: var(--ion-color-step-150);
+    }
 
     ion-toggle {
       --background: var(--ion-color-step-950);
@@ -317,8 +358,8 @@ html.md {
    */
 
   .ios body.dark {
-    --ion-background-color: #000000;
-    --ion-background-color-rgb: 0, 0, 0;
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18, 18, 18;
 
     --ion-text-color: #ffffff;
     --ion-text-color-rgb: 255, 255, 255;
@@ -344,6 +385,10 @@ html.md {
     --ion-color-step-950: #f2f2f2;
 
     --ion-item-background: #000000;
+
+    --ion-toolbar-background: #1f1f1f;
+
+    --ion-tab-bar-background: #1f1f1f;
 
     --ion-card-background: #1c1c1d;
   }

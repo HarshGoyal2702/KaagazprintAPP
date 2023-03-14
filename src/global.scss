@@ -28,10 +28,33 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "./theme/core.scss";
 
+@import url("./theme/0px-576px.scss") only screen and (min-width: 0px) and
+  (max-width: 576px);
+
 html,
 body {
   height: 100%;
 }
 body {
   margin: 0;
+}
+
+/** ********** CUSTOM COLOR ATTRIBUTES STARTS ********** */
+
+.ion-color-text {
+  --ion-color-base: var(--ion-text-color);
+  --ion-color-base-rgb: var(--ion-text-color-rgb);
+}
+
+.ion-color-sub-text {
+  --ion-color-base: var(--ion-sub-text-color);
+  --ion-color-base-rgb: var(--ion-sub-text-color-rgb);
+}
+
+/** ********** CUSTOM COLOR ATTRIBUTES ENDS ********** */
+
+.ng2-pdf-viewer-container,
+.ng2-pdf-viewer-container * {
+  width: 100% !important;
+  height: 100% !important;
 }

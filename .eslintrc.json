@@ -14,6 +14,16 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "no-underscore-dangle": [
+          "error",
+          { "allow": ["foo_", "_bar"] },
+          { "allowAfterThisConstructor": true },
+          { "allowAfterSuper": true },
+          { "allowAfterThis": true },
+          { "enforceInMethodNames": true },
+          { "enforceInClassFields": true },
+          { "allowFunctionParams": false }
+        ],
         "@angular-eslint/component-class-suffix": [
           "error",
           {
@@ -23,8 +33,8 @@
         "@angular-eslint/component-selector": [
           "error",
           {
-            "type": "element",
-            "prefix": "app",
+            "type": ["element", "attribute"],
+            "prefix": ["app", "kaagaz"],
             "style": "kebab-case"
           }
         ],
@@ -32,7 +42,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": ["app", "kaagaz"],
             "style": "camelCase"
           }
         ]

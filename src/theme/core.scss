@@ -136,10 +136,35 @@ strong {
   font-weight: var(--ion-bold);
 }
 
-P {
+p {
   font-size: 14px;
   line-height: 16px;
   color: var(--ion-text-color);
+  font-weight: var(--kaagaz-font-weight-normal);
+
+  &.fs-12 {
+    line-height: 14px;
+    font-size: 12px !important;
+  }
+
+  &.fs-14 {
+    line-height: 16px;
+    font-size: 14px !important;
+  }
+
+  &.sub {
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--ion-sub-text-color);
+  }
+
+  &.bold {
+    font-weight: var(--kaagaz-font-weight-bold);
+  }
+
+  &.light {
+    font-weight: var(--kaagaz-font-weight-light);
+  }
 }
 
 h6 {
@@ -209,49 +234,4 @@ input[type="number"] {
 .innerhtml h5,
 .innerhtml h6 {
   color: var(--ion-text-color);
-}
-
-.border-none {
-  border: none !important;
-}
-
-.sync-spinner {
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  pointer-events: none;
-  animation: spin 1s infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* CUSTOM CSS */
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-}
-
-.flex-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
-.kaagaz-logo {
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center, center;
-  background-image: url("../assets/logos/kaagaz-print.jpg");
 }

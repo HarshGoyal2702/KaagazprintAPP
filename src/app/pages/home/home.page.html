@@ -11,17 +11,28 @@
         <ion-content class="ion-padding-top ion-padding-bottom">
             <ion-list id="inbox-list">
                 <ion-menu-toggle class="ion-margin-top" auto-hide="false" *ngFor="let p of pages; let i = index">
-                    <ion-item routerDirection="root" [routerLink]="[p.url]" routerLinkActive="selected">
+                    <!-- routerDirection="forward" -->
+                    <ion-item [routerLink]="[p.url]" routerLinkActive="selected">
                         <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
-                        <mat-icon slot="start"> dashboard </mat-icon>
+                        <mat-icon slot="start"> {{ p.icon }} </mat-icon>
                         <ion-label>{{ p.title }}</ion-label>
                     </ion-item>
                 </ion-menu-toggle>
             </ion-list>
-            <ion-item lines="none" detail="false" class="theme-toggler ion-padding-top">
-                <ion-label> Dark Theme </ion-label>
-                <ion-toggle (ionChange)="toggleTheme($event?.detail?.checked)" color="primary"></ion-toggle>
-            </ion-item>
+            <ion-list id="bottom-list">
+                <ion-menu-toggle auto-hide="false">
+                    <ion-item lines="none" detail="false" class="logout ion-padding-top" (click)="logout()">
+                        <mat-icon slot="start">logout</mat-icon>
+                        <ion-label> Logout </ion-label>
+                    </ion-item>
+                </ion-menu-toggle>
+                <ion-menu-toggle class="ion-margin-top" auto-hide="false">
+                    <ion-item lines="none" detail="false" class="theme-toggler ion-padding-top">
+                        <ion-label> Dark Theme </ion-label>
+                        <ion-toggle (ionChange)="toggleTheme($event?.detail?.checked)" color="primary"></ion-toggle>
+                    </ion-item>
+                </ion-menu-toggle>
+            </ion-list>
         </ion-content>
     </ion-menu>
     <ion-router-outlet id="home-content"></ion-router-outlet>

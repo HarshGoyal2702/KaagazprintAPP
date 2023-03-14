@@ -1,0 +1,82 @@
+@import "./mixins";
+
+.container {
+  @include flex-col;
+}
+
+.flex-col {
+  @include flex-col;
+}
+
+.flex-row {
+  @include flex-row;
+}
+
+.full-height {
+  height: 100%;
+  flex: 1 1 0%;
+}
+
+.sync-spinner {
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  pointer-events: none;
+  animation: spin 1s infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.kaagaz-logo {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center, center;
+  background-image: url("../assets/logos/kaagaz-print.jpg");
+}
+
+.kaagaz-card {
+  @include flex-col;
+  border-radius: 6px;
+  background: var(--ion-color-light);
+  // border: 1px solid var(--ion-color-primary);
+  // box-shadow: 0px 0px 2px 2px rgb(140 140 140 / 27%);
+
+  &.shadow-lw {
+    box-shadow: var(--kaagaz-global-shadow-lw);
+  }
+  &.shadow-md {
+    box-shadow: var(--kaagaz-global-shadow-md);
+  }
+  &.shadow-tl {
+    box-shadow: var(--kaagaz-global-shadow-tl);
+  }
+}
+
+.padding-4 {
+  padding: 4px;
+}
+.padding-6 {
+  padding: 6px;
+}
+.padding-8 {
+  padding: 8px;
+}
+.padding-10 {
+  padding: 10px;
+}
+.padding-12 {
+  padding: 12px;
+}
+.padding-14 {
+  padding: 14px;
+}
+.padding-16 {
+  padding: 16px;
+}

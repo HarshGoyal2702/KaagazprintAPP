@@ -7,14 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SignUpPageRoutingModule } from './sign-up-routing.module';
 
 import { SignUpPage } from './sign-up.page';
+import { UserProfileModule } from 'kaagaz-feature-modules';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
+    IonicModule, UserProfileModule,
     SignUpPageRoutingModule
   ],
   declarations: [SignUpPage]
 })
-export class SignUpPageModule {}
+export class SignUpPageModule { }

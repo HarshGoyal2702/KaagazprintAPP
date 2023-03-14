@@ -1,0 +1,13 @@
+:host {
+  width: 46px;
+  margin-right: 6px;
+}
+
+:host(.ng-invalid.ng-touched) {
+  ion-input {
+    --placeholder-opacity: 1;
+    --color: var(--ion-color-danger);
+    --placeholder-color: var(--ion-color-danger);
+    // --background: rgba(var(--ion-color-danger-rgb), 0.4);
+  }
+}

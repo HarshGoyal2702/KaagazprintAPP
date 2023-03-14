@@ -1,0 +1,21 @@
+<ion-item>
+    <ion-label class="ion-text-wrap">
+        <ion-text>
+            <h3> {{ address?.type }} </h3>
+        </ion-text>
+        <br>
+        <ion-text>
+            <p class="sub">
+                {{ address?.addressLine1 }},&nbsp;{{ address?.addressLine2 }},&nbsp;{{ address?.city }},
+                &nbsp;{{ address?.state }},&nbsp;{{ address?.country }},&nbsp;{{ address?.pincode }}
+            </p>
+        </ion-text>
+        <div class="flex-row ion-justify-content-end">
+            <ion-button fill="clear" color="primary" kaagazAddressAnchor [address]="address" [presentingEL]="hostEL"
+                (addressChange)="onAddressChange($event)">
+                Edit
+            </ion-button>
+            <ion-button fill="clear" color="danger" (click)="deleteAdd()"> Delete </ion-button>
+        </div>
+    </ion-label>
+</ion-item>

@@ -1,0 +1,19 @@
+<div class="container" *ngIf="order">
+    <div class="kaagaz-card flex-col">
+        <div class="content flex-row">
+            <span class="doc">
+                <kaagaz-doc-renderer [file]="order?.fileToPrint"
+                    (fileUploaded)="onFileUploaded($event)"></kaagaz-doc-renderer>
+            </span>
+            <span class="details padding-16">
+                <h3> {{ order?.fileToPrint?.fileName }} </h3>
+                <p class="sub"> {{ order?.fileToPrint?.fileSize }}
+                    <small *ngIf="order?.fileToPrint?.numberOfPage">, {{ order?.fileToPrint?.numberOfPage }} Pages
+                    </small>
+                    <small *ngIf="order?.fileToPrint?.ext">, {{ order?.fileToPrint?.ext }} </small>
+                </p>
+            </span>
+        </div>
+        <div class="footer padding-8"></div>
+    </div>
+</div>

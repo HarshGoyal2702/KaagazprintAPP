@@ -1,5 +1,5 @@
 import { Injectable, SkipSelf, Optional } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpEventType, HttpEvent, HttpRequest, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpEventType, HttpEvent, HttpRequest, HttpErrorResponse, HttpProgressEvent, HttpResponse } from '@angular/common/http';
 import { map, catchError, mergeMap, retry } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import { plainToClass } from 'class-transformer';
@@ -72,15 +72,15 @@ export class HttpRequestService {
         const req = new HttpRequest<R>(methodType, url, body, { ...httpOptions, ...httpOpt });
         return this._http.request<R>(req).pipe(
             catchError(this.handleError.bind(this)),
-            mergeMap((res: HttpEvent<R>) => {
-                if (res.type === HttpEventType.Response) {
-                    const resObj = plainToClass(classType, res.body);
+            mergeMap((res: HttpEvent<R> | any) => {
+                if ((res as HttpEvent<R>).type === HttpEventType.Response) {
+                    const resObj = plainToClass(classType, (res as HttpResponse<R>).body);
                     return of(resObj);
-                } else if (res.type === HttpEventType.UploadProgress) {
-                    const percValue = (res.loaded / res.total) * 100;
+                } else if ((res as HttpEvent<R>).type === HttpEventType.UploadProgress) {
+                    const percValue = ((res as HttpProgressEvent).loaded / (res as HttpProgressEvent).total) * 100;
                     return of(percValue);
                 }
-                return EMPTY;
+                return of(res);
             })
         );
     }
@@ -172,7 +172,6 @@ export class HttpRequestService {
         );
     }
 
-
     // showAlert(options: AlertOptions) { this._alert.showAlert(options); }
 
     handleError(error: HttpErrorResponse): Observable<Response<any>> {
@@ -189,7 +188,7 @@ export class HttpRequestService {
         //         `Backend returned code ${error.status}, ` +
         //         `body was: ${error.error}`);
         // }
-        return of(new Response(true, 'No Internet', null, null));
+        return of(new Response(true, 'Error', null, null));
         // return an observable with a user-facing error message
         // return throwError(
         //     'Something bad happened; please try again later.');

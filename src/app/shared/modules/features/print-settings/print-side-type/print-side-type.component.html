@@ -1,0 +1,8 @@
+<ion-item lines="none">
+    <ion-select placeholder="Select Print Type" mode="md" interface="popover" [formControl]="inputCT"
+        (ionBlur)="onTouched()" (ionChange)="onChange()">
+        <ion-select-option [value]="1">One Sided</ion-select-option>
+        <ion-select-option [value]="2">Both Sided</ion-select-option>
+        <ion-select-option [value]="3">Booklet Printing</ion-select-option>
+    </ion-select>
+</ion-item>

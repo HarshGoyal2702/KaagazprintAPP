@@ -1,0 +1,71 @@
+@mixin flex-col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  -ms-flex-direction: column;
+}
+@mixin flex-col-imp {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  flex-direction: column !important;
+  -ms-flex-direction: column !important;
+}
+@mixin flex-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+@mixin flex-row-imp {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: -webkit-flex !important;
+  display: flex !important;
+  -ms-flex-direction: row !important;
+  flex-direction: row !important;
+}
+
+$-z-index: (
+  "sidebar": 999,
+  "error_popup": 9999,
+);
+
+@mixin image-prop(
+  $backSize: contain,
+  $backRepeat: no-repeat,
+  $backPosition: "center, center"
+) {
+  background-size: $backSize;
+  background-repeat: $backRepeat;
+  background-position: $backPosition;
+}
+
+@mixin seperator(
+  $side: all,
+  $width: 1px,
+  $lineStyle: solid,
+  $color: var(--ion-color-border)
+) {
+  @if $side == all {
+    border: $width $lineStyle #{$color};
+  } @else {
+    border-#{$side}: $width $lineStyle #{$color};
+  }
+}
+
+@mixin zIndex($for) {
+  z-index: map-get($-z-index, $key: $for);
+}
+
+@mixin transition-genr($prop, $duration) {
+  transition: $prop $duration cubic-bezier(0.25, 0.8, 0.25, 1);
+  -moz-transition: $prop $duration cubic-bezier(0.25, 0.8, 0.25, 1);
+  -webkit-transition: $prop $duration cubic-bezier(0.25, 0.8, 0.25, 1);
+  -o-transition: $prop $duration cubic-bezier(0.25, 0.8, 0.25, 1);
+}

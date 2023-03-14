@@ -1,25 +1,67 @@
 <ion-content class="ion-padding">
-    <div class="container flex-col">
-        <div class="header">
-            <span class="logo kaagaz-logo"></span>
-            <h1 class="ion-margin-top"> Welcome <br> Back </h1>
-            <p class="ion-margin-top"> Please enter the details below to continue. </p>
-        </div>
-        <div class="login flex-col ion-padding">
-            <ion-item>
-                <ion-label position="floating">Phone Number</ion-label>
-                <ion-input></ion-input>
-            </ion-item>
-            <span class="actions flex-row ion-padding ion-margin-top">
-                <ion-fab>
-                    <ion-fab-button color="primary" (click)="login()">
-                        <ion-icon name="chevron-forward"></ion-icon>
-                    </ion-fab-button>
-                </ion-fab>
-            </span>
-        </div>
-        <div class="sign-up">
-            <ion-button fill="clear" color="primary"> Sign Up </ion-button>
-        </div>
-    </div>
+    <ion-slides pager="false" [options]="{ initialSlide: 0, speed: 400 }">
+        <ion-slide>
+            <div class="container flex-col">
+                <div class="header">
+                    <span class="logo kaagaz-logo"></span>
+                    <h1 class="ion-margin-top"> Welcome <br> Back </h1>
+                    <p class="ion-margin-top"> Please enter the details below to continue. </p>
+                </div>
+                <div class="login flex-col ion-padding">
+                    <ion-item>
+                        <ion-label position="floating">Phone Number</ion-label>
+                        <ion-input [formControl]="phoneNumber"></ion-input>
+                    </ion-item>
+                    <span class="actions flex-row ion-padding ion-margin-top">
+                        <ion-fab>
+                            <ion-fab-button color="primary" [disabled]="loader" (click)="phoneNumber?.valid&&login()">
+                                <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon>
+                                <ion-spinner *ngIf="loader" name="crescent"></ion-spinner>
+                            </ion-fab-button>
+                        </ion-fab>
+                    </span>
+                </div>
+                <div class="sign-up">
+                    <ion-button fill="clear" color="primary" routerDirection="root" [routerLink]="['/sign-up']">
+                        Sign Up
+                    </ion-button>
+                </div>
+            </div>
+        </ion-slide>
+        <ion-slide>
+            <div class="container flex-col">
+                <div class="header">
+                    <span class="logo kaagaz-logo"></span>
+                    <h1 class="ion-margin-top"> Verification <br> Code </h1>
+                    <p class="ion-margin-top ion-margin-bottom"> We have sent the verification code to <br> <b> Your
+                            Phone Number </b>
+                    </p>
+                    <ion-text color="primary">
+                        +91 {{ phoneNumber?.value }} &nbsp;
+                    </ion-text>
+                </div>
+                <div class="otp-verification flex-col ion-padding">
+                    <ion-item>
+                        <ion-label position="floating">Enter OTP</ion-label>
+                        <ion-input class="otp-input ion-text-center" type="password" [formControl]="otp"></ion-input>
+                    </ion-item>
+                    <span class="actions flex-row ion-padding ion-margin-top">
+                        <ion-fab>
+                            <ion-fab-button color="primary" [disabled]="loader" (click)="otp?.valid&&verifyOTP()">
+                                <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon>
+                                <ion-spinner *ngIf="loader" name="crescent"></ion-spinner>
+                            </ion-fab-button>
+                        </ion-fab>
+                    </span>
+                </div>
+                <div class="sign-up">
+                    <ion-fab>
+                        <ion-fab-button color="primary" (click)="reset()" [disabled]="loader">
+                            <ion-icon name="chevron-back"></ion-icon>
+                        </ion-fab-button>
+                    </ion-fab>
+                </div>
+            </div>
+        </ion-slide>
+    </ion-slides>
 </ion-content>
