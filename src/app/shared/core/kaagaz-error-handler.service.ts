@@ -8,6 +8,7 @@ export class KaagazErrorHandlerService implements ErrorHandler {
     constructor(private _toaster: ToastService) { }
 
     handleError(error: Error): void {
+        console.log(error);
         this._toaster.runToast({ error: true, message: error.message });
     }
     //     handleError(error) {

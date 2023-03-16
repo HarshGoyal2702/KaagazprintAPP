@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { CoreService } from 'kaagaz-core';
-import { User } from 'kaagaz-models';
+import { KaagazUser } from 'kaagaz-models';
 
 @Component({
   selector: 'kaagaz-profile',
@@ -11,7 +11,7 @@ import { User } from 'kaagaz-models';
 })
 export class ProfilePage implements OnInit {
 
-  user: User;
+  user: KaagazUser;
   constructor(private _menu: MenuController, private _core: CoreService) {
     this.user = this._core.user;
   }

@@ -6,14 +6,40 @@
                     (fileUploaded)="onFileUploaded($event)"></kaagaz-doc-renderer>
             </span>
             <span class="details padding-16">
-                <h3> {{ order?.fileToPrint?.fileName }} </h3>
+                <ion-text>
+                    {{ order?.fileToPrint?.fileName }}
+                </ion-text>
                 <p class="sub"> {{ order?.fileToPrint?.fileSize }}
                     <small *ngIf="order?.fileToPrint?.numberOfPage">, {{ order?.fileToPrint?.numberOfPage }} Pages
                     </small>
                     <small *ngIf="order?.fileToPrint?.ext">, {{ order?.fileToPrint?.ext }} </small>
                 </p>
+                <p class="ion-margin-top sub fs-14">
+                    <small> {{ order?.copies ? order?.copies: 0 }} copies </small>, &
+                    <small class="sub" *ngIf="order?.pagesToPrint?.all"> all pages </small>
+                    <small class="sub" *ngIf="order?.pagesToPrint?.range">
+                        pages {{ order?.pagesToPrint?.pagesRange?.start }}
+                        to
+                        {{ order?.pagesToPrint?.pagesRange?.end }}
+                    </small>
+                    <small class="sub" *ngIf="order?.pagesToPrint?.selected">
+                        pages {{ order?.pagesToPrint?.selectedPages }}
+                    </small>
+                    <small> to be printed on </small>
+                    <small> {{ order?.pageType | paperSize }} paper. </small>
+                </p>
+                <p class="sub fs-14">
+                    Orientation should be {{ order?.pageOrientation | pageOrientation }}, with
+                    {{ order?.pageLayout | pageLayout }} layout.
+                </p>
             </span>
         </div>
-        <div class="footer padding-8"></div>
+        <div class="footer flex-col padding-8" [class.failed]="order?.fileToPrint?.fail">
+            <span class="flex-row ion-justify-content-between">
+                <ion-text color="light"> Status: - {{ order?.orderStatus | orderStatus }} </ion-text>
+                <ion-text color="light"> Upload Status: - {{ order?.fileToPrint?.fail ? 'FAILED': 'UPLOADED' }}
+                </ion-text>
+            </span>
+        </div>
     </div>
 </div>

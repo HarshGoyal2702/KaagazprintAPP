@@ -1,12 +1,12 @@
 import { Type } from "class-transformer";
 import { HttpResponse } from "./http-response";
 
-export class UserRes extends HttpResponse {
-    @Type(() => User)
-    data: User;
+export class KaagazUserRes extends HttpResponse {
+    @Type(() => KaagazUser)
+    data: KaagazUser;
 }
 
-export class User {
+export class KaagazUser {
     createdAt: string;
     loginToken: string;
     name: string;

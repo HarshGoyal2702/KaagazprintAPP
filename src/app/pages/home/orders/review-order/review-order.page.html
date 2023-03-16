@@ -1,90 +1,134 @@
 <ion-header>
     <ion-toolbar>
+        <!-- <ion-menu-button slot="start" (click)="toggleMenu()"></ion-menu-button> -->
         <ion-back-button color="text" icon="chevron-back-outline" slot="start"></ion-back-button>
         <ion-title class="ion-no-padding" slot="start"> Review Order</ion-title>
     </ion-toolbar>
     <ion-toolbar>
-        <ion-item lines="none">
+        <ion-item lines="none" slot="start">
             <ion-thumbnail slot="start">
                 <img src="../../../../../assets/logos/kaagaz-print.jpg" />
             </ion-thumbnail>
         </ion-item>
+        <ion-buttons slot="end">
+            <ion-button color="primary" fill="clear" kaagazAddressPicker (addressSelected)="onAddressSelection($event)"
+                [presentingEL]="hostEL">
+                Pick Address
+            </ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+            <ion-button color="primary" fill="clear" kaagazAddressAnchor (addressChange)="onAddressSelection($event)"
+                [presentingEL]="hostEL">
+                Add New Address
+            </ion-button>
+        </ion-buttons>
     </ion-toolbar>
 </ion-header>
+<ng-container *ngIf="(order$ | async) as order">
+    <ng-container *ngIf="(order?.fileToPrint?.numberOfPage | orderBill: order?.copies) as bill">
+        <ion-content class="ion-padding-start ion-padding-end">
+            <div class="container">
+                <ul class="cards">
+                    <li class="card flex-col kaagaz-card shadow-lw">
+                        <span class="file field flex-row">
+                            <ion-icon name="document-text-outline"></ion-icon>
+                            <p class="title"> {{ order?.fileToPrint?.fileName }} </p>
+                            <p class="sub"> {{ order?.copies }} Copies </p>
+                        </span>
+                        <span class="price field flex-row">
+                            <p class="sub">
+                                1.5 ₹ / page X {{ order?.fileToPrint?.numberOfPage }} pages X {{ order?.copies }} copies
+                                = {{ bill?.total }} ₹
+                            </p>
+                        </span>
+                        <span class="seperator"></span>
+                    </li>
+                    <li class="card ion-padding-top ion-padding-bottom">
+                        <h4> Pages </h4>
+                    </li>
+                    <li class="card flex-col kaagaz-card shadow-lw">
+                        <span class="pages field flex-row">
+                            <p> Pages to be Printed </p>
+                            <p class="sub" *ngIf="order.pagesToPrint.all"> All </p>
+                            <p class="sub" *ngIf="order.pagesToPrint.range">
+                                Pages {{ order?.pagesToPrint?.pagesRange?.start }}
+                                &nbsp; to &nbsp;
+                                {{ order?.pagesToPrint?.pagesRange?.end }}
+                            </p>
+                            <p class="sub" *ngIf="order.pagesToPrint.selected">
+                                Pages {{ order?.pagesToPrint?.selectedPages }}
+                            </p>
+                        </span>
+                        <span class="seperator"></span>
+                        <span class="paper-size field flex-row">
+                            <p> Paper Size </p>
+                            <p class="sub"> {{ order?.pageType | paperSize }} </p>
+                        </span>
+                        <span class="seperator"></span>
+                        <span class="orientation field flex-row">
+                            <p> Orientation </p>
+                            <p class="sub"> {{ order?.pageOrientation | pageOrientation }} </p>
+                        </span>
+                    </li>
+                    <li class="card ion-padding-top ion-padding-bottom">
+                        <h4> Layout </h4>
+                    </li>
+                    <li class="card flex-col kaagaz-card shadow-lw">
+                        <span class="layout field flex-row">
+                            <p> Page Layout </p>
+                            <p class="sub"> {{ order?.pageLayout | pageLayout }} </p>
+                        </span>
+                        <span class="seperator"></span>
+                        <span class="print-type field flex-row">
+                            <p> Print Type </p>
+                            <p class="sub"> {{ order?.printType | printType }} </p>
+                        </span>
+                    </li>
+                    <li class="card ion-padding-top ion-padding-bottom">
+                        <h4> Paper Handling </h4>
+                    </li>
+                    <li class="card flex-col kaagaz-card shadow-lw">
+                        <span class="collate field flex-row">
+                            <p> Sheets to be </p>
+                            <p class="sub"> {{ order?.collateType | pageCollate }} </p>
+                        </span>
+                    </li>
+                    <li class="card ion-padding-top ion-padding-bottom">
+                        <h4> Bill Details </h4>
+                    </li>
+                    <li class="card flex-col kaagaz-card shadow-lw">
+                        <span class="total field flex-row">
+                            <p> Total </p>
+                            <p class="sub"> {{ bill?.total }} ₹ </p>
+                        </span>
+                        <span class="seperator"></span>
+                        <span class="total field flex-row">
+                            <p> Delivery Partner Fee </p>
+                            <p class="sub"> {{ bill?.deliveryCharges === 0 ? 'FREE': bill?.deliveryCharges }} ₹ </p>
+                        </span>
+                        <p class="sub fs-14" *ngIf="bill?.deliveryCharges === 0"> FREE Delivery on your order! </p>
+                        <span class="seperator"></span>
+                        <span class="total field flex-row">
+                            <p> Govt. Taxes & Other Charges </p>
+                            <p class="sub"> {{ bill?.tax }} ₹ </p>
+                        </span>
+                        <span class="seperator"></span>
+                        <span class="total field flex-row">
+                            <p> Gross Total </p>
+                            <p class="sub"> {{ bill?.grossTotal }} ₹ </p>
+                        </span>
+                    </li>
+                </ul>
 
-<ion-content class="ion-padding-start ion-padding-end">
-    <div class="container" *ngIf="(order$ | async) as order">
-        <ul class="cards">
-            <li class="card flex-col kaagaz-card shadow-lw">
-                <span class="file field flex-row">
-                    <ion-icon name="document-text-outline"></ion-icon>
-                    <p class="title"> File Name </p>
-                    <p class="sub"> {{ order?.copies }} Copies </p>
-                </span>
-                <span class="seperator"></span>
-                <span class="price field flex-row">
-                    <p class="sub"> 1.5 ₹ / page X 30 pages = 45 ₹ </p>
-                </span>
-            </li>
-            <li class="card ion-padding-top ion-padding-bottom">
-                <h4> Pages </h4>
-            </li>
-            <li class="card flex-col kaagaz-card shadow-lw">
-                <span class="pages field flex-row">
-                    <p> Pages to be Printed </p>
-                    <p class="sub" *ngIf="order.pagesToPrint.all"> All </p>
-                    <p class="sub" *ngIf="order.pagesToPrint.range">
-                        Pages {{ order?.pagesToPrint?.pagesRange?.start }}
-                        &nbsp; to &nbsp;
-                        {{ order?.pagesToPrint?.pagesRange?.end }}
-                    </p>
-                    <p class="sub" *ngIf="order.pagesToPrint.selected">
-                        Pages {{ order?.pagesToPrint?.selectedPages }}
-                    </p>
-                </span>
-                <span class="seperator"></span>
-                <span class="paper-size field flex-row">
-                    <p> Paper Size </p>
-                    <p class="sub"> {{ order?.pageType | paperSize }} </p>
-                </span>
-                <span class="seperator"></span>
-                <span class="orientation field flex-row">
-                    <p> Orientation </p>
-                    <p class="sub"> {{ order?.pageOrientation | pageOrientation }} </p>
-                </span>
-            </li>
-            <li class="card ion-padding-top ion-padding-bottom">
-                <h4> Layout </h4>
-            </li>
-            <li class="card flex-col kaagaz-card shadow-lw">
-                <span class="layout field flex-row">
-                    <p> Page Layout </p>
-                    <p class="sub"> {{ order?.pageLayout | pageLayout }} </p>
-                </span>
-                <span class="seperator"></span>
-                <span class="print-type field flex-row">
-                    <p> Print Type </p>
-                    <p class="sub"> {{ order?.printType | printType }} </p>
-                </span>
-            </li>
-            <li class="card ion-padding-top ion-padding-bottom">
-                <h4> Paper Handling </h4>
-            </li>
-            <li class="card flex-col kaagaz-card shadow-lw">
-                <span class="collate field flex-row">
-                    <p> Sheets to be </p>
-                    <p class="sub"> {{ order?.collateType | pageCollate }} </p>
-                </span>
-            </li>
-        </ul>
-
-    </div>
-</ion-content>
-
-<ion-footer>
-    <ion-toolbar>
-        <ion-button slot="end" color="primary" fill="solid" type="submit" class="ion-margin-start ion-margin-end">
-            Pay 45 ₹
-        </ion-button>
-    </ion-toolbar>
-</ion-footer>
+            </div>
+        </ion-content>
+        <ion-footer>
+            <ion-toolbar>
+                <ion-button slot="end" color="primary" fill="solid" type="submit" [disabled]="true"
+                    class="ion-margin-start ion-margin-end" (click)="payBill(order, bill)">
+                    Pay {{ bill?.grossTotal }} ₹
+                </ion-button>
+            </ion-toolbar>
+        </ion-footer>
+    </ng-container>
+</ng-container>

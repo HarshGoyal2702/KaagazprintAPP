@@ -1,3 +1,12 @@
+import { AbstractControl, ValidationErrors } from "@angular/forms";
+
+export function fileUploadedValidator() {
+    return (c: AbstractControl): ValidationErrors | null => {
+        const result = c.value && (c.value as KaagazDocument).fail ? { failed: true } : null;
+        return result;
+    };
+}
+
 export class KaagazDocument {
     id: string;
     fileName: string;
@@ -12,7 +21,6 @@ export class KaagazDocument {
     progress: number = 0;
     fileSize: string;
     thumbnailUrl: string;
-    pages: number;
 
     constructor(name: string, localUrl?: string, type?: string, ext?: string, size?: string, fileUrl?: string) {
         this.fileName = name;

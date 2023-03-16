@@ -86,6 +86,9 @@ ion-button {
   &.button-round {
     --border-radius: 40px;
   }
+  .kaagaz-spinner {
+    position: unset !important;
+  }
 }
 
 /** **************** ION-BUTTON ENDS **************** */

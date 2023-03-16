@@ -16,6 +16,7 @@
                 Edit
             </ion-button>
             <ion-button fill="clear" color="danger" (click)="deleteAdd()"> Delete </ion-button>
+            <ion-button *ngIf="select" fill="solid" color="primary" (click)="selectAdd()"> Select </ion-button>
         </div>
     </ion-label>
 </ion-item>

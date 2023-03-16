@@ -1,5 +1,6 @@
 <div class="doc flex-col">
-    <span class="preview flex-col" docs-opener [file]="file" [view]="loading ? 'icon-only' :'with-player'"></span>
+    <span class="preview flex-col" docs-opener [file]="file"
+        [view]="loading && file?.fail ? 'icon-only' :'with-player'"></span>
     <span class="progress flex-col" *ngIf="(file?.progress < 100 && file?.progress > 0) || loading">
         <mat-progress-spinner color="primary" [mode]="((file?.progress <= 10)) ? 'indeterminate' : 'determinate'"
             [value]="file?.progress" strokeWidth="1.5" [diameter]="50">

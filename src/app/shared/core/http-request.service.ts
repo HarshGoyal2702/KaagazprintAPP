@@ -4,6 +4,7 @@ import { map, catchError, mergeMap, retry } from 'rxjs/operators';
 import { Observable, EMPTY, of } from 'rxjs';
 import { plainToClass } from 'class-transformer';
 import { FileResponse, Response } from '../models/http-response';
+import { ToastService } from 'kaagaz-services';
 
 export function create<T>(c: { new(...arg: any[]): T; }): T {
     return new c();
@@ -27,7 +28,7 @@ export type ClassType<T> = {
 @Injectable()
 export class HttpRequestService {
     constructor(@Optional() @SkipSelf() private _isExist: HttpRequestService,
-        private _http: HttpClient) {
+        private _http: HttpClient, private _toaster: ToastService) {
         if (this._isExist) {
             throw new Error('HttpRequestService is already imported, should be imported in App Module only...');
         }
@@ -174,24 +175,24 @@ export class HttpRequestService {
 
     // showAlert(options: AlertOptions) { this._alert.showAlert(options); }
 
-    handleError(error: HttpErrorResponse): Observable<Response<any>> {
-        // this.showAlert({ status: true, title: 'OOPS!', description: 'Please Check Your Internet Connection' });
-        // if (error.error instanceof ErrorEvent) {
-        //     this.showAlert({ status: true, title: 'No Internet', description: 'Please Check Your Internet Connection' });
+    handleError(errorRes: HttpErrorResponse): Observable<Response<any>> {
+        if (errorRes.status === 0) {
+            this._toaster.runToast(
+                { error: true, message: 'No Internet Connectivity!!', code: errorRes.status },
+                { position: 'top' }
+            );
+        }
+        // if (errorRes.error instanceof ErrorEvent) {
         //     // A client-side or network error occurred. Handle it accordingly.
         //     console.error('An error occurred:', error.error.message);
         // } else {
-        //     this.showAlert({ status: true, title: error.status.toString(), description: error.error.message });
         //     // The backend returned an unsuccessful response code.
         //     // The response body may contain clues as to what went wrong,
         //     console.error(
         //         `Backend returned code ${error.status}, ` +
         //         `body was: ${error.error}`);
         // }
-        return of(new Response(true, 'Error', null, null));
-        // return an observable with a user-facing error message
-        // return throwError(
-        //     'Something bad happened; please try again later.');
+        return of(new Response(true, 'Error', errorRes.status, null));
     }
 }
 

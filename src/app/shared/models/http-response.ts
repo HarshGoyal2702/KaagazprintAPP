@@ -1,12 +1,12 @@
 export class HttpResponse {
     error: boolean;
     message: string;
-    code: string;
+    code: string | number;
     totalCount?: number;
 }
 export class Response<T = any> extends HttpResponse {
     data: T;
-    constructor(error: boolean, message: string, code: string, data: any) {
+    constructor(error: boolean, message: string, code: string | number, data: any) {
         super();
         this.error = error;
         this.message = message;

@@ -59,6 +59,24 @@
   }
 }
 
+/** ************** KAAGAZ-SPINNER STARTS ************** */
+
+.kaagaz-spinner {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 102;
+  height: 100%;
+  @include flex-col;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  // background: rgba($color: var(--ion-color-primary-rgb), $alpha: 0.05);
+}
+
+/** ************** KAAGAZ-SPINNER ENDS ************** */
 .padding-4 {
   padding: 4px;
 }

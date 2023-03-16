@@ -1,5 +1,5 @@
 import { HttpHeaders } from '@angular/common/http';
-import { Injectable, Optional } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ToastService } from 'kaagaz-services';
@@ -10,9 +10,9 @@ import { Response, APIURLS, KaagazDocument } from 'kaagaz-models';
 
 export class DocHandlerService {
 
-    constructor(@Optional() private _http: HttpRequestService, private _toast: ToastService) { }
+    constructor(private _http: HttpRequestService, private _toast: ToastService) { }
 
-    upload(fd: FormData): Observable<{ url: string, numberOfPage: number }> {
+    upload(fd: FormData): Observable<KaagazDocument> {
         return this._http.httpUploadLDRequest<Response>(Response, 'POST', APIURLS.UPLOAD_FILE,
             fd, { reportProgress: true, headers: new HttpHeaders({}) }).pipe(
                 map((res: number | Response<KaagazDocument>) => {

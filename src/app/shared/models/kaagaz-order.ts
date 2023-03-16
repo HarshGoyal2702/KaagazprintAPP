@@ -1,5 +1,13 @@
 import { KaagazDocument } from "./kaagaz-document";
 
+export enum KaagazOrderStatus {
+    PLACING = 1,
+    PLACED = 2,
+    TRANSIT = 3,
+    DELIVERED = 4,
+    FAILED = 5
+}
+
 export enum KaagazPageType {
     A4 = 1,
     A5 = 2,
@@ -47,11 +55,27 @@ export enum KaagazCollateType {
 
 export class KaagazOrder {
     copies: number;
+    bill: KaagazOrderBill;
     pageType: KaagazPageType;
     printType: KaagazPrintType;
     fileToPrint: KaagazDocument;
     pageLayout: kaagazPageLayout;
+    orderStatus: KaagazOrderStatus;
     collateType: KaagazCollateType;
     pagesToPrint: KaagazPagesToPrint;
     pageOrientation: KaagazPageOrientation;
+}
+
+export class KaagazOrderBill {
+    // total: number;
+    tax: number;
+    deliveryCharges: number;
+    grossTotal: number;
+
+    constructor(public total: number) {
+        this.tax = Math.floor(((total * 18) / 100) * 100) / 100;
+        // this.tax = parseInt(((total * 18) / 100).toFixed(2), 10);
+        this.deliveryCharges = total > 150 ? 0 : 50;
+        this.grossTotal = Math.floor((total + this.tax + this.deliveryCharges) * 100) / 100;
+    }
 }

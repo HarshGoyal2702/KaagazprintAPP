@@ -57,4 +57,14 @@ body {
 .ng2-pdf-viewer-container * {
   width: 100% !important;
   height: 100% !important;
+  overflow-x: unset !important;
+  overflow-y: unset !important;
 }
+
+/** ********** MODALS CSS STARTS ********** */
+
+.address-picker {
+  --width: 500px;
+}
+
+/** ********** MODALS CSS ENDS ********** */

@@ -1,8 +1,26 @@
+:host {
+  background: var(--ion-color-light);
+}
+:host-context(.dark) {
+  ion-toolbar,
+  ion-item,
+  ion-content {
+    --background: inherit !important;
+  }
+
+  .card.kaagaz-card {
+    background: unset;
+  }
+  :host {
+    background: inherit !important;
+  }
+}
 ion-toolbar,
 ion-item,
 ion-content {
   --background: rgba(var(--kaagaz-app-background-rgb), 0.6);
 }
+
 ion-thumbnail {
   margin: 0px;
   width: 96px;

@@ -3,7 +3,6 @@ import {
     Input, OnChanges, OnInit, Output, SimpleChanges
 } from '@angular/core';
 import { KaagazDocument } from 'kaagaz-models';
-import { delay } from 'rxjs/operators';
 import { DocHandlerService } from '../services/doc-handler.service';
 
 @Component({
@@ -23,6 +22,7 @@ export class DocRendererComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void {
         if (!this.file.fileUrl && this.file.localUrl) { this.upload(); }
         else { this._download(); }
+        console.log('ng on changes of doc renderer -', changes);
     }
     ngOnInit() { }
 
@@ -31,18 +31,20 @@ export class DocRendererComponent implements OnInit, OnChanges {
     upload() {
         this.loading = true; this._cdr.markForCheck();
         this._files.upload(this.file.formData).subscribe(
-            (res: number | { url: string, numberOfPage: number }) => {
-                if (typeof res === 'number') { this.file.progress = res; }
+            (res: number | KaagazDocument) => {
+                if (typeof res === 'number') { this.file.fail = false; this.file.progress = res; }
                 else if (res && typeof res === 'object') {
-                    this.file.fileUrl = res.url;
+                    this.file.fileUrl = res.fileUrl;
+                    this.file.fail = false;
                     this.file.numberOfPage = res.numberOfPage;
-                    this.fileUploaded.emit(this.file);
                 } else { this._markAsFail(); }
                 this._cdr.markForCheck();
             }, (error) => { this._markAsFail(); },
             () => {
-                this.loading = false; this._cdr.markForCheck();
-                console.log('file -', this.file);
+                this.loading = false;
+                this.file.formData = null;
+                this.fileUploaded.emit(this.file);
+                this._cdr.markForCheck();
             }
         );
     }

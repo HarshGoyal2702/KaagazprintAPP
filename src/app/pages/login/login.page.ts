@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, O
 import { FormControl, Validators } from '@angular/forms';
 import { IonSlides, NavController } from '@ionic/angular';
 import { CoreService } from 'kaagaz-core';
-import { User } from 'kaagaz-models';
+import { KaagazUser } from 'kaagaz-models';
 import { LoginService, ToastService } from 'kaagaz-services';
 
 @Component({
@@ -23,7 +23,9 @@ export class LoginPage implements OnInit, AfterViewInit {
     constructor(private _login: LoginService, private _core: CoreService,
         private _router: NavController, private _cdr: ChangeDetectorRef) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        if (this._core.user && this._core.authToken) { this._router.navigateRoot(['/kaagaz']); }
+    }
     ngAfterViewInit() { this._slides.lockSwipes(true); }
     reset() {
         this.otp.reset(); this.phoneNumber.reset();
@@ -46,7 +48,7 @@ export class LoginPage implements OnInit, AfterViewInit {
     verifyOTP() {
         this.loader = true;
         this._login.verifyOTP(this.phoneNumber.value, this.otp.value).subscribe(
-            (user: User) => {
+            (user: KaagazUser) => {
                 if (user) {
                     this._core.user = user;
                     this._core.authToken = user.loginToken;

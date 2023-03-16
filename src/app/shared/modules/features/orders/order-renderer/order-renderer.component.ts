@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { KaagazOrder } from 'kaagaz-models';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'kaagaz-order-renderer',
@@ -15,13 +14,11 @@ export class OrderRendererComponent implements OnInit, OnDestroy {
     @Input() doDownload: boolean;
     @Input() order: KaagazOrder;
 
+    @Output() docRendered: EventEmitter<void> = new EventEmitter<void>();
     constructor() { }
-    ngOnDestroy(): void {
-    }
-    ngOnInit() {
-    }
+    ngOnDestroy(): void { }
 
-    onFileUploaded(value: any) {
-        console.log('on file uploading completion -', this.order.fileToPrint);
-    }
+    ngOnInit() { }
+
+    onFileUploaded(value: any) { this.docRendered.emit(); }
 }

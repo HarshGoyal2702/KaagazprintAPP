@@ -1,0 +1,24 @@
+<ion-header *ngIf="selection">
+    <ion-toolbar>
+        <ion-title> Select Address </ion-title>
+        <ion-buttons slot="end">
+            <ion-button (click)="dismiss(null)">
+                <ion-icon name="close" slot="icon-only"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content> -->
+<ng-container *ngIf="(addresses$ | async) as addresses">
+    <ion-list>
+        <ng-container *ngFor="let address of addresses;let addInd = index">
+            <kaagaz-address-renderer [select]="selection" [address]="address" (addressChange)="refresh()"
+                (addressDelete)="deleteAddress(address)"
+                (addressSelected)="onAddressSelection(address)"></kaagaz-address-renderer>
+        </ng-container>
+    </ion-list>
+    <ion-text color="danger" *ngIf="addresses?.length === 0"> No Addresses Saved Yet! </ion-text>
+</ng-container>
+<kaagaz-spinner color="primary" *ngIf="loading"></kaagaz-spinner>
+<!-- </ion-content> -->

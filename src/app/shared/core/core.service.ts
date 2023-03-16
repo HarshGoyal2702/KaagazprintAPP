@@ -1,17 +1,18 @@
 import { Injectable } from '@angular/core';
 import { plainToClass } from 'class-transformer';
-import { User } from '../models/user';
+import { KaagazUser } from '../models/user';
+import { StorageService } from './storage.service';
 
 @Injectable()
 export class CoreService {
 
-    constructor() { }
+    constructor(private _storage: StorageService) { }
 
-    set user(user: User) {
+    set user(user: KaagazUser) {
         window.localStorage.setItem('user', JSON.stringify(user));
     }
-    get user(): User {
-        return plainToClass(User, JSON.parse(window.localStorage.getItem('user')) as User);
+    get user(): KaagazUser {
+        return plainToClass(KaagazUser, JSON.parse(window.localStorage.getItem('user')) as KaagazUser);
     }
     set authToken(token: string) {
         window.localStorage.setItem('authToken', token);
@@ -22,5 +23,7 @@ export class CoreService {
 
     clearStorage() {
         window.localStorage.clear();
+        this._storage.clearStorage();
     }
+
 }

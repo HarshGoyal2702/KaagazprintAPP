@@ -44,8 +44,21 @@
         <ng-container [ngSwitch]="fileType">
             <ng-container *ngSwitchCase="'pdf'">
                 <div class="icon-view flex-col">
+                    <!-- file?.localUrl?.changingThisBreaksApplicationSecurity || -->
                     <pdf-viewer class="pdf-viewer" (after-load-complete)="onLoadingComplete($event)" [page]="1"
-                        [src]="file?.localUrl?.changingThisBreaksApplicationSecurity || file?.fileUrl"></pdf-viewer>
+                        [fit-to-page]="true" [show-all]="false" [src]="file?.fileUrl"></pdf-viewer>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'doc'">
+                <div class="icon-view flex-col">
+                    <pdf-viewer class="pdf-viewer" (onError)="onPdfRenderingError($event)"
+                        (after-load-complete)="onLoadingComplete($event)" [page]="1" [src]="file?.fileUrl"></pdf-viewer>
+                </div>
+            </ng-container>
+            <ng-container *ngSwitchCase="'docx'">
+                <div class="icon-view flex-col">
+                    <pdf-viewer class="pdf-viewer" (onError)="onPdfRenderingError($event)"
+                        (after-load-complete)="onLoadingComplete($event)" [page]="1" [src]="file?.fileUrl"></pdf-viewer>
                 </div>
             </ng-container>
             <ng-container *ngSwitchCase="'jpg'">

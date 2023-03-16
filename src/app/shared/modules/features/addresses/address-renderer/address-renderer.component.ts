@@ -7,20 +7,25 @@ import { KaagazAddress } from 'kaagaz-models';
     styleUrls: ['./address-renderer.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush
 })
+
 export class AddressRendererComponent implements OnInit {
 
+    @Input() select: boolean;
     @Input() address: KaagazAddress;
 
     @Output() addressDelete: EventEmitter<void> = new EventEmitter<void>();
     @Output() addressChange: EventEmitter<KaagazAddress> = new EventEmitter<KaagazAddress>();
+    @Output() addressSelected: EventEmitter<KaagazAddress> = new EventEmitter<KaagazAddress>();
 
     constructor(public hostEL: ElementRef) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        console.log(this.address);
+    }
 
     deleteAdd() { this.addressDelete.emit(); }
+    selectAdd() { this.addressSelected.emit(); }
     onAddressChange(address: KaagazAddress) {
-        this.address = address;
         this.addressChange.emit(this.address);
     }
 }

@@ -43,6 +43,7 @@ export class DocPickerComponent implements OnInit, ControlValueAccessor {
         if (this.multiple) { this._fileInputEL.setAttribute('multiple', this.multiple ? 'true' : 'false'); }
         this._fileInputEL.onchange = (event: Event) => {
             for (let i = 0; i < this._fileInputEL.files.length; i++) { this.readFile(<any>this._fileInputEL.files[i]); }
+            this.onTouch();
         };
     }
     // @HostListener('click', ['event'])
@@ -122,11 +123,9 @@ export class DocPickerComponent implements OnInit, ControlValueAccessor {
         });
         const docUrl = URL.createObjectURL(tempblob);
         // setPdfFileData(docUrl);
-        // console.log(docUrl);
     }
     async extractPdfPage(arrayBuff) {
         const pdfSrcDoc = await PDFDocument.load(arrayBuff, { ignoreEncryption: true });
-        // console.log(pdfSrcDoc.getPages());
         const pdfNewDoc = await PDFDocument.create();
         const pages = await pdfNewDoc.copyPages(pdfSrcDoc, this.range(2, 3));
         // pages.forEach(page => pdfNewDoc.addPage(page));
@@ -147,13 +146,13 @@ export class DocPickerComponent implements OnInit, ControlValueAccessor {
                 this._santizr.bypassSecurityTrustResourceUrl(URL.createObjectURL(imgBlob)), (<any>file).type,
                 ext, ((<any>file).size / 1000000).toPrecision(2) + 'mb');
             const formData = new FormData();
-            formData.append('name', fileName);
+            formData.append('name', fileName + '.' + doc.ext);
             formData.append('file', imgBlob, fileName);
             doc.formData = formData;
             if (this._onChange) { this._onChange(doc); }
             this.fileSelected.emit(doc);
             this._fileInputEL.value = null;
-            this._cdr.markForCheck();
+            this._cdr.markForCheck(); this._cdr.detectChanges();
         };
         zoneOriginalInstance.readAsArrayBuffer((<any>file));
         // const fileReader = new FileReader();

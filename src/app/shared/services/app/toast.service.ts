@@ -21,7 +21,7 @@ export class ToastService {
     async runToast(requisites: ToastRequisites, options?: ToastOptions) {
         const opts: ToastOptions = {
             message: `${requisites.message} ${requisites.error ?
-                requisites.code ? '(Error Code -' + requisites.code + ')' : '--' : ''}`,
+                requisites.code ? '(Error Code -' + requisites.code + ')' : '' : ''}`,
             color: requisites.error ? 'danger' : 'success',
             duration: requisites.error ? 5000 : 3000,
             position: 'bottom',

@@ -25,7 +25,7 @@ export class CoreModule {
             providers: [
                 CoreService, HttpRequestService, StorageService,
                 { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptorService, multi: true },
-                // { provide: ErrorHandler, useClass: KaagazErrorHandlerService }
+                { provide: ErrorHandler, useClass: KaagazErrorHandlerService }
             ]
         };
     }

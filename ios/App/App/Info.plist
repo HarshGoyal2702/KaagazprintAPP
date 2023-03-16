@@ -35,6 +35,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please grant the permission to store the camera photos or downloaded photos.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please grant the permission to upload your file on Kaagaz.</string>	
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

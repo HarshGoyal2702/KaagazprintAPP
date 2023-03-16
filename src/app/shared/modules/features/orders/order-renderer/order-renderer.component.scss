@@ -5,10 +5,18 @@
   .doc {
     width: 150px;
     height: 150px;
+    overflow: hidden;
+    border-top-left-radius: 6px;
   }
   .details {
     flex: 1 1;
   }
   .footer {
+    border-end-end-radius: 6px;
+    border-end-start-radius: 6px;
+    background: rgba($color: var(--ion-color-primary-tint-rgb), $alpha: 0.9);
+    &.failed {
+      background: rgba($color: var(--ion-color-danger-rgb), $alpha: 0.9);
+    }
   }
 }

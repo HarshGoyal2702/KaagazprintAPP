@@ -25,13 +25,13 @@ export class DocUploaderDirective {
 
     private _upload(file: KaagazDocument) {
         this._files.upload(file.formData).subscribe(
-            (res: number | { url: string, numberOfPage: number }) => {
+            (res: number | KaagazDocument) => {
                 if (typeof res === 'number') {
                     file.progress = res;
                     this._cdr.markForCheck();
                 }
                 else {
-                    file.fileUrl = res.url;
+                    file.fileUrl = res.fileUrl;
                     file.numberOfPage = res.numberOfPage;
                     this._cdr.markForCheck();
                     this.fileUploaded.emit(file);

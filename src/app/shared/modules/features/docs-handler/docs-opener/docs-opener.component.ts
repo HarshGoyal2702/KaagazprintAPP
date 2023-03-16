@@ -15,7 +15,6 @@ export class DocsOpenerComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
-    onLoadingComplete(pdf) {
-        this.loader = false;
-    }
+    onLoadingComplete(pdf) { this.loader = false; }
+    onPdfRenderingError(_) { }
 }

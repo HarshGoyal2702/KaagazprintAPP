@@ -54,7 +54,10 @@
             cancel
         </ion-button>
         <ion-button (click)="saveAddress()" slot="end" color="primary" fill="solid" [disabled]="addressFG?.invalid">
-            Save Address
+            <ng-container *ngIf="!loading;else spinner"> {{ address?.addressId ? 'Update' :'Save'}} </ng-container>
+            <ng-template #spinner>
+                <kaagaz-spinner color="light" name="crescent"></kaagaz-spinner>
+            </ng-template>
         </ion-button>
     </ion-toolbar>
 </ion-footer>

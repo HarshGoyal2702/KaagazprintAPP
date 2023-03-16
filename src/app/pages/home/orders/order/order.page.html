@@ -10,20 +10,18 @@
     </ion-header>
     <ion-grid class="ion-no-padding ion-no-margin">
         <ion-row class="full-height">
-            <ion-col size="6">
+            <ion-col size-sm="6" size="12">
                 <ion-content class="ion-padding">
                     <div class="doc-picker">
-                        <!-- (fileReady)="onFileUploaded($event)" -->
-                        <!-- <kaagaz-docs-handler [multiple]="false" [asProfileImage]="false"
-                            formControlName="fileToPrintUrl"></kaagaz-docs-handler> -->
                         <kaagaz-doc-picker formControlName="fileToPrint"></kaagaz-doc-picker>
                     </div>
                     <div class="order-details flex-col ion-margin-top" *ngIf="fileToPrintCT?.value">
-                        <kaagaz-order-renderer [order]="orderFG?.value"></kaagaz-order-renderer>
+                        <kaagaz-order-renderer (docRendered)="onDocRendered()"
+                            [order]="orderFG?.value"></kaagaz-order-renderer>
                     </div>
                 </ion-content>
             </ion-col>
-            <ion-col size="6">
+            <ion-col size-sm="6" size="12">
                 <ion-content>
                     <div class="order-form ion-padding-start ion-padding-end">
                         <ul class="cards flex-col">
@@ -74,7 +72,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="kaagaz-card ion-margin-start">
+                            <li class="kaagaz-card">
                                 <ul class="fields">
                                     <li class="field">
                                         <kaagaz-form-field>
@@ -119,8 +117,8 @@
     </ion-grid>
     <ion-footer>
         <ion-toolbar>
-            <!-- [disabled]="orderFG?.invalid" -->
-            <ion-button slot="end" color="primary" fill="solid" type="submit" (click)="reviewOrder()"> Review
+            <ion-button slot="end" color="primary" fill="solid" type="submit" (click)="reviewOrder()"
+                [disabled]="orderFG?.invalid"> Review
             </ion-button>
         </ion-toolbar>
     </ion-footer>
