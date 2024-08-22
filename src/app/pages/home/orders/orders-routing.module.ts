@@ -10,7 +10,11 @@ const routes: Routes = [
       { path: 'new', loadChildren: () => import('./order/order.module').then(m => m.OrderPageModule), },
       { path: 'review', loadChildren: () => import('./review-order/review-order.module').then(m => m.ReviewOrderPageModule) }
     ]
+  },  {
+    path: 'payment',
+    loadChildren: () => import('./payment/payment.module').then( m => m.PaymentPageModule)
   }
+
 ];
 
 @NgModule({

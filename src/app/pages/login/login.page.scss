@@ -9,12 +9,17 @@
   }
   .header {
     margin-top: 48px;
+    display: flex;
+    justify-content: center;
     align-items: center;
+    flex-direction: column;
 
     .logo {
       width: 144px;
       height: 144px;
       display: block;
+      align-items: center;
+      justify-content: center;
     }
 
     h1 {
@@ -42,4 +47,17 @@
   .otp-input {
     letter-spacing: 18px;
   }
-}
+
+  .continue-button p {
+    // width: 100%; // Make the button take the full width of its container
+    // height: 50px; // Set the height of the button
+    // border-radius: 8px; // Apply a slight border-radius to give it rounded corners
+    // font-size: 18px; // Adjust the font size
+    // background-color: #3399cc; // Set your preferred background color
+    color: white; // Set the text color to white
+    // &:disabled {
+    //   background-color: #b3b3b3; // Change the background color when disabled
+    //   color: white; // Keep the text color white when disabled
+    // }
+  }
+}  

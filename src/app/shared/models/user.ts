@@ -11,9 +11,9 @@ export class KaagazUser {
     loginToken: string;
     name: string;
     phoneNumber: string;
-    role: number;
+    role: "CUSTOMER";
     updatedAt: string;
-    userId: number
+    userId: string;
     image: string;
     emailId: string;
 }

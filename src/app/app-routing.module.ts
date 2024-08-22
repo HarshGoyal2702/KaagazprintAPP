@@ -7,6 +7,11 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule) },
   { path: 'sign-up', loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpPageModule) },
   { path: 'kaagaz', loadChildren: () => import('./pages/home/home.module').then(m => m.HomePageModule), canLoad: [LoginGuard] },
+  {
+    path: 'payment',
+    loadChildren: () => import('./pages/home/orders/payment/payment.module').then( m => m.PaymentPageModule),canLoad:[LoginGuard]
+  },
+
 ];
 
 @NgModule({

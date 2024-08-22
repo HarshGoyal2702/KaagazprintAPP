@@ -17,4 +17,10 @@ export class DashboardPage implements OnInit {
     this._menu.enable(true);
     this._menu.toggle();
   }
+
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
 }

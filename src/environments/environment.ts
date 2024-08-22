@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://backend.kaagazprint.com/',
+  baseUrl: 'http://localhost:8080/', // Backend API URL
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

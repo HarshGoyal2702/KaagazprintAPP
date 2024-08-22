@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bill Details</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-text color="medium">Item</ion-text>
+          </ion-col>
+          <ion-col class="ion-text-right">
+            <ion-text color="medium">Amount</ion-text>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            Document Printing
+          </ion-col>
+          <ion-col class="ion-text-right">
+            ₹ {{bill?.grossTotal}}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            tax
+          </ion-col>
+          <ion-col class="ion-text-right">
+            ₹{{bill?.tax}}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <strong>Total</strong>
+          </ion-col>
+          <ion-col class="ion-text-right">
+            <strong>₹{{bill?.grossTotal}}</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-row class="ion-justify-content-center ion-margin-top">
+        <ion-col size="12" class="ion-text-center">
+          <ion-button expand="block" color="primary" (click)="startPayment(bill?.grossTotal)"> Pay Now</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

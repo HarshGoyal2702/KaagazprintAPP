@@ -42,7 +42,7 @@ export class AddressComponent implements OnInit {
         this.loading = true;
         this._addressSer.saveAddress(this.addressFG.getRawValue()).subscribe(
             (address: KaagazAddress) => { if (address) { this.dismiss(address); } },
-            (error) => { }, () => { this.loading = false; this._cdr.markForCheck(); }
+            (error) => { }, () => { alert("adress save nhi hua"); this.loading = false; this._cdr.markForCheck(); }
         );
     }
 }

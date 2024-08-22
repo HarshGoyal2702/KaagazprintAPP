@@ -27,8 +27,8 @@ export class UserProfileComponent implements OnInit {
         this.userProfileFG = this._fb.group({
             image: [this.user.image || ''],
             name: [this.user.name || '', [Validators.required]],
-            phoneNumber: [{ value: this.user.phoneNumber || '', disabled: true }, [Validators.required]],
-            role: [this.user.role || ''],
+            phoneNumber: [{ value: this.user.phoneNumber || '', disabled: false }, [Validators.required]],
+            role: [this.user.role || 'CUSTOMER'],
             userId: [this.user.userId || ''],
             emailId: [this.user.emailId || '', [Validators.required, Validators.email]],
         });
@@ -37,7 +37,7 @@ export class UserProfileComponent implements OnInit {
     saveProfile() {
         this.loading = true;
         this._userSer.saveUser(this.userProfileFG.getRawValue()).subscribe(
-            (success: boolean) => { this.loading = false; this._cdr.markForCheck(); },
+            (success: boolean) => { console.log(this.user); this.loading = false; this._cdr.markForCheck(); console.log(this.user)},
         );
     }
 }

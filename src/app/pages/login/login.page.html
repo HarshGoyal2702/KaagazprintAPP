@@ -4,20 +4,22 @@
             <div class="container flex-col">
                 <div class="header">
                     <span class="logo kaagaz-logo"></span>
-                    <h1 class="ion-margin-top"> Welcome <br> Back </h1>
+                    <h1 class="ion-margin-top"> Welcome To Kaagazprint </h1>
                     <p class="ion-margin-top"> Please enter the details below to continue. </p>
                 </div>
                 <div class="login flex-col ion-padding">
                     <ion-item>
                         <ion-label position="floating">Phone Number</ion-label>
-                        <ion-input [formControl]="phoneNumber"></ion-input>
+                        
+                        <ion-input [formControl]="phoneNumber"><p>+91</p></ion-input>
                     </ion-item>
                     <span class="actions flex-row ion-padding ion-margin-top">
                         <ion-fab>
-                            <ion-fab-button color="primary" [disabled]="loader" (click)="phoneNumber?.valid&&login()">
-                                <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon>
+                            <ion-button class="continue-button" color="primary" [disabled]="loader" (click)="phoneNumber?.valid&&login()">
+                                <!-- <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon> -->
+                                 <p *ngIf="!loader">Continue</p>
                                 <ion-spinner *ngIf="loader" name="crescent"></ion-spinner>
-                            </ion-fab-button>
+                            </ion-button>
                         </ion-fab>
                     </span>
                 </div>
@@ -47,18 +49,20 @@
                     </ion-item>
                     <span class="actions flex-row ion-padding ion-margin-top">
                         <ion-fab>
-                            <ion-fab-button color="primary" [disabled]="loader" (click)="otp?.valid&&verifyOTP()">
-                                <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon>
+                            <ion-button class="continue-button" color="primary" [disabled]="loader" (click)="otp?.valid&&verifyOTP()">
+                                <!-- <ion-icon *ngIf="!loader" name="chevron-forward"></ion-icon> -->
+                                 <p>Continue</p>
                                 <ion-spinner *ngIf="loader" name="crescent"></ion-spinner>
-                            </ion-fab-button>
+                            </ion-button>
                         </ion-fab>
                     </span>
                 </div>
                 <div class="sign-up">
                     <ion-fab>
-                        <ion-fab-button color="primary" (click)="reset()" [disabled]="loader">
-                            <ion-icon name="chevron-back"></ion-icon>
-                        </ion-fab-button>
+                        <ion-button class="continue-button" color="primary" (click)="reset()" [disabled]="loader">
+                            <!-- <ion-icon name="chevron-back"></ion-icon> -->
+                             <p>Back</p>
+                        </ion-button>
                     </ion-fab>
                 </div>
             </div>
