@@ -11,9 +11,10 @@ import { PageSizeComponent } from './page-size/page-size.component';
 import { PagesComponent } from './pages/pages.component';
 import { PrintSideTypeComponent } from './print-side-type/print-side-type.component';
 import { OrdersModule } from '../orders/orders.module';
+import { PageColorComponent } from './page-color/page-color.component';
 
 const declarations: Array<Type<any> | any[]> = [CopiesComponent, BindingLocationComponent, CollateTypeComponent, OrientationComponent,
-  PageLayoutComponent, PageSizeComponent, PagesComponent, PrintSideTypeComponent]
+  PageLayoutComponent, PageSizeComponent, PagesComponent, PrintSideTypeComponent, PageColorComponent]
 
 @NgModule({
   declarations: declarations,

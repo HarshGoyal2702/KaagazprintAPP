@@ -17,6 +17,8 @@ export class ReviewOrderPage implements OnInit {
 
     ngOnInit() {
         this.order$ = this._ordersSer.getCurrentOrder();
+        console.log(this.order$);
+        
     }
     toggleMenu() { this._menu.toggle(); }
     onAddressSelection(address: KaagazAddress) {

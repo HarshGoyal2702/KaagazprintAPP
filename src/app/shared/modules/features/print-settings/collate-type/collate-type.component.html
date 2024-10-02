@@ -1,8 +1,9 @@
 <ion-item lines="none">
-  <ion-select placeholder="Collate/Staple/Group(H)" mode="md" interface="alert" [formControl]="inputCT"
+  <ion-select placeholder="Binding/Staple" mode="md" interface="alert" [formControl]="inputCT"
     (ionBlur)="onTouched()" (ionChange)="onChange()">
-    <ion-select-option [value]="1">Collate</ion-select-option>
+    <ion-select-option [value]="1">Loose Paper</ion-select-option>
     <ion-select-option [value]="2">Staple</ion-select-option>
-    <ion-select-option [value]="3">Group(H)</ion-select-option>
+    <ion-select-option [value]="3">Spiral Binding</ion-select-option>
+    <ion-select-option [value]="4">Soft Binding</ion-select-option>
   </ion-select>
 </ion-item>

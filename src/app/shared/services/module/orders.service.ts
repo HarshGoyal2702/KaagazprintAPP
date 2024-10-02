@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { OrdersPageModule } from 'src/app/pages/home/orders/orders.module';
 import { StorageService } from 'kaagaz-core';
-import { KaagazOrder, KaagazStorageKeys } from 'kaagaz-models';
+import { APIURLS, KaagazOrder, KaagazStorageKeys } from 'kaagaz-models';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({ providedIn: OrdersPageModule })
 
@@ -9,7 +11,7 @@ export class OrdersService {
 
     private _currentOrder: KaagazOrder;
 
-    constructor(private _storage: StorageService) { }
+    constructor(private _storage: StorageService,private http:HttpClient) { }
 
     async getCurrentOrder(): Promise<KaagazOrder> {
         return this._currentOrder ? this._currentOrder :
@@ -25,4 +27,13 @@ export class OrdersService {
     saveOrder(order: KaagazOrder) {
 
     }
+
+
+    getUserOrders(userId: string): Observable<any> {
+        console.log(userId,typeof(userId))
+        const url = `${APIURLS.ALL_ORDER}?filter=userId:"${userId}"`;
+        console.log(url)
+
+        return this.http.get(url);
+      }
 }

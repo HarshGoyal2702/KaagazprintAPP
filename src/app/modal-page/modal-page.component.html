@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Modal Title</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+y
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Terms and Conditions</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="terms-box">
+    <p>
+      Please read these terms and conditions carefully before using our service.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+    <p>
+      By using this service, you agree to these terms and conditions. If you do not agree with any part of these terms, you must not use our service.
+    </p>
+    <p>
+      [Insert more terms and conditions here...]
+    </p>
+  </div>
+  <div class="checkbox-container">
+    <ion-item>
+      <ion-checkbox slot="start" [(ngModel)]="isChecked"></ion-checkbox>
+      <ion-label>I agree to the terms and conditions</ion-label>
+    </ion-item>
+  </div>
+  <ion-button expand="full" [disabled]="!isChecked" (click)="continue1()">Continue</ion-button>
+</ion-content>

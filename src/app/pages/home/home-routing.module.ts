@@ -20,12 +20,21 @@ const routes: Routes = [
                 path: 'profile', loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule),
                 canLoad: [LoginGuard]
             },
+            {
+                path: 'my-orders', loadChildren: () => import('./my-orders/my-orders.module').then(m => m.MyOrdersPageModule),
+                canLoad: [LoginGuard]
+            },
         ], canActivateChild: [LoginGuard]
     },
     {
         path: 'orders',
         loadChildren: () => import('./orders/orders.module').then(m => m.OrdersPageModule)
+    },
+    {
+        path: 'my-orders',
+        loadChildren: () => import('./my-orders/my-orders.module').then(m => m.MyOrdersPageModule)
     }
+
 ];
 
 @NgModule({

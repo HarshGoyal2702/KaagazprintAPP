@@ -1,31 +1,26 @@
-<ion-split-pane contentId="home-content">
+<!-- <ion-split-pane contentId="home-content">
     <ion-menu contentId="home-content" type="overlay">
         <ion-header class="ion-margin-bottom">
             <ion-toolbar>
                 <ion-title slot="start">
                     User Name
-                    <!-- <ion-label class="ion-padding-start"> Any other info about user </ion-label> -->
+                    <ion-label class="ion-padding-start"> Any other info about user </ion-label>
                 </ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding-top ion-padding-bottom">
             <ion-list id="inbox-list">
                 <ion-menu-toggle class="ion-margin-top" auto-hide="false" *ngFor="let p of pages; let i = index">
-                    <!-- routerDirection="forward" -->
+                    routerDirection="forward"
                     <ion-item [routerLink]="[p.url]" routerLinkActive="selected">
-                        <!-- <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon> -->
+                        <ion-icon slot="start" [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'"></ion-icon>
                         <mat-icon slot="start"> {{ p.icon }} </mat-icon>
                         <ion-label>{{ p.title }}</ion-label>
                     </ion-item>
                 </ion-menu-toggle>
             </ion-list>
             <ion-list id="bottom-list">
-                <ion-menu-toggle auto-hide="false">
-                    <ion-item lines="none" detail="false" class="logout ion-padding-top" (click)="logout()">
-                        <mat-icon slot="start">logout</mat-icon>
-                        <ion-label> Logout </ion-label>
-                    </ion-item>
-                </ion-menu-toggle>
+               
                 <ion-menu-toggle class="ion-margin-top" auto-hide="false">
                     <ion-item lines="none" detail="false" class="theme-toggler ion-padding-top">
                         <ion-label> Dark Theme </ion-label>
@@ -36,4 +31,25 @@
         </ion-content>
     </ion-menu>
     <ion-router-outlet id="home-content"></ion-router-outlet>
-</ion-split-pane>
+</ion-split-pane> -->
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="dashboard">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>Home</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="orders">
+            <ion-icon name="cart"></ion-icon>
+            <ion-label>Order Now</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="my-orders">
+            <ion-icon name="bag-outline"></ion-icon>
+            <ion-label>My Orders</ion-label>
+        </ion-tab-button>
+        <ion-tab-button tab="profile">
+            <ion-icon name="settings"></ion-icon>
+            <ion-label>Settings</ion-label>
+        </ion-tab-button>
+    </ion-tab-bar>
+</ion-tabs>

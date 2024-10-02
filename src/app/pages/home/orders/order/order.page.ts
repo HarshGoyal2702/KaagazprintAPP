@@ -3,7 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MenuController, NavController } from '@ionic/angular';
 import {
     kaagazPageLayout, KaagazDocument, KaagazPageOrientation, KaagazPageType,
-    KaagazPrintType, KaagazOrder, KaagazOrderStatus, fileUploadedValidator
+    KaagazPrintType, KaagazOrder, KaagazOrderStatus, fileUploadedValidator,
+    KaagazPageColor
 } from 'kaagaz-models';
 import { OrdersService } from 'kaagaz-services';
 
@@ -35,8 +36,11 @@ export class OrderPage implements OnInit, OnDestroy {
             pageLayout: [kaagazPageLayout.ONE_on_ONE, [Validators.required]],
             collateType: [null, [Validators.required]],
             pagesToPrint: [{ all: true }, [Validators.required]],
-            fileToPrint: [null, [Validators.required, fileUploadedValidator()]], orderStatus: [KaagazOrderStatus.PLACING],
+            fileToPrint: [null, [Validators.required, fileUploadedValidator()]], 
+            orderStatus: [KaagazOrderStatus.PLACING],
             pageOrientation: [KaagazPageOrientation.PORTRAIT, [Validators.required]],
+            ColorPrint: [KaagazPageColor.BLACK_WHITE, [Validators.required]]
+
         });
         this._ordersSer.getCurrentOrder().then((order: KaagazOrder) => {
             if (order) { this.orderFG.patchValue(order); this._cdr.markForCheck(); }
@@ -53,7 +57,8 @@ export class OrderPage implements OnInit, OnDestroy {
             printType: KaagazPrintType.ONE_SIDED,
             orderStatus: KaagazOrderStatus.PLACING,
             pageLayout: kaagazPageLayout.ONE_on_ONE,
-            pageOrientation: KaagazPageOrientation.PORTRAIT
+            pageOrientation: KaagazPageOrientation.PORTRAIT,
+            ColorPrint:KaagazPageColor.BLACK_WHITE
         });
     }
     toggleMenu() { this._menu.toggle(); }

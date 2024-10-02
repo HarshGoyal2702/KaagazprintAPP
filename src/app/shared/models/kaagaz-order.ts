@@ -19,6 +19,11 @@ export enum KaagazPageOrientation {
     LANDSCAPE = 2,
 }
 
+export enum KaagazPageColor{
+    COLOR = 1,
+    BLACK_WHITE = 2,
+}
+
 export class KaagazPagesToPrintRange {
     start: number;
     end: number;
@@ -48,9 +53,11 @@ export enum KaagazPrintType {
 }
 
 export enum KaagazCollateType {
-    COLLATE = 1,
+    LOOSE_PAPER = 1,
     STAPLE = 2,
-    GROUP = 3,
+    SPIRAL_BINDING = 3,
+    SOFT_BINDING = 4
+
 }
 
 export class KaagazOrder {

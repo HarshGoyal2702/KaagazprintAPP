@@ -1,42 +1,282 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
-        <!-- <ion-menu-button slot="start" (click)="toggleMenu()"></ion-menu-button> -->
         <ion-buttons>
             <ion-button (click)="toggleMenu()">
                 <ion-icon name="menu" slot="icon-only"></ion-icon>
             </ion-button>
         </ion-buttons>
-        <ion-title>Dashboard</ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
-<ion-content class="ion-paddding">
-    <ion-header>
-        <ion-toolbar>
-          <ion-title>Inline Modal</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      <ion-content class="ion-padding">
-        <ion-button expand="block" (click)="setOpen(true)">Open</ion-button>
-        <ion-modal [isOpen]="isModalOpen">
-          <ng-template>
-            <ion-header>
-              <ion-toolbar>
-                <ion-title>Modal</ion-title>
-                <ion-buttons slot="end">
-                  <ion-button (click)="setOpen(false)">Close</ion-button>
-                </ion-buttons>
-              </ion-toolbar>
-            </ion-header>
-            <ion-content class="ion-padding">
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni illum quidem recusandae ducimus quos
-                reprehenderit. Veniam, molestias quos, dolorum consequuntur nisi deserunt omnis id illo sit cum qui. Eaque,
-                dicta.
-              </p>
-            </ion-content>
-          </ng-template>
-        </ion-modal>
-      </ion-content>
+<ion-content class="ion-padding">
+    <div padding>
+        <ion-segment [(ngModel)]="PrintType">
+            <ion-segment-button class="headers col-4" value="Standard">
+                Standard
+            </ion-segment-button>
+            <ion-segment-button class="headers col-4" value="Official Documents">
+                Official
+            </ion-segment-button>
+            <ion-segment-button class="headers col-4" value="Institute/Colleges">
+                Institutions
+            </ion-segment-button>
+        </ion-segment>
+    </div>
 
+    <div [ngSwitch]="PrintType">
+        <ion-list *ngSwitchCase="'Standard'">
+            <ion-card class="border">
+                <ion-card-header class="inline">
+                    <ion-card-title>Standard Document</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="show()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showValues">
+                    <p>Standard documents includes resumes, personal letters, essays, certificates, invitations, and
+                        more.</p>
+                    <p><strong class="bold">Instructions:</strong> Please ensure your documents are in PDF or Image format, with
+                        recommended margins and font sizes for optimal printing.</p>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Available Options</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <ion-icon name="document-text-outline"></ion-icon>
+                                <p>A4</p>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="document-outline"></ion-icon>
+                                <p>A3</p>
+                            </ion-col>
+                            <ion-col>
+                                <!-- <ion-icon name="color-palette-outline"></ion-icon> -->
+                                <img src="../../../../assets/icon/stars.png" width="20px" height="20px" alt="">
+                                <p>Glossy</p>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="leaf-outline"></ion-icon>
+                                <p>Recycled</p>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-icon name="print-outline"></ion-icon>
+                                <p>Single-Sided</p>
+                            </ion-col>
+                            <ion-col>
+                                <ion-icon name="layers-outline"></ion-icon>
+                                <p>Double-Sided</p>
+                            </ion-col>
+                            <ion-col>
+                                <img src="../../../../assets/icon/black-and-white.png" width="20px" height="20px"
+                                    alt="">
+                                <!-- <ion-icon name="document-text-outline"></ion-icon> -->
+                                <p>Black & White</p>
+                            </ion-col>
+                            <ion-col>
+                                <!-- <ion-icon name="color-fill-outline"></ion-icon> -->
+                                <img src="../../../../assets/icon/color-palette.png" width="20px" height="20px" alt="">
+                                <p>Color
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header class="inline">
+                    <ion-card-title>Delivery Information</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="show2()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showValue">
+                    <p><span class="bold">Standard delivery</span> : Same Day</p>
+                    <p class="important-tagline">Express delivery options are also available</p>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Order and Pay</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Make your order and proceed to payment.</p>
+                    <ion-button class="rounded" color="primary" routerLink="/kaagaz/orders/new">
+                        <ion-icon name="cloud-upload-outline"></ion-icon> 
+                        Upload Files
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+
+
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'Official Documents'">
+            <ion-card class="border">
+                <ion-card-header class="inline">
+                    <ion-card-title>Official Documents</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="toggleOfficialInfo()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showOfficialInfo">
+                    <p>Official documents include contracts, reports, and formal presentations.</p>
+                    <p><strong class="bold">Instructions:</strong> Ensure your documents are in PDF or Images format with the required confidentiality options.</p>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Available Options</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row class="test">
+                            <ion-col class="icon">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                                <p>Premium Paper</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                <p>Watermarking</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="key-outline"></ion-icon>
+                                <p>Encryption</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="mail-outline"></ion-icon>
+                                <p>Sealed Envelopes</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="print-outline"></ion-icon>
+                                <p>Double Sided</p>
+                            </ion-col>
+                       
+                         
+                            <ion-col class="icon">
+                                <ion-icon name="layers-outline"></ion-icon>
+                                <p>Specific-Margins</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="color-fill-outline"></ion-icon>
+                                <p>Color Accuracy</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="time-outline"></ion-icon>
+                                <p>Priority Delivery</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header class="inline">
+                    <ion-card-title>Delivery Information</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="toggleOfficialDeliveryInfo()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showOfficialDeliveryInfo">
+                    <p><span class="bold">Priority delivery</span>: Next Day with Tracking</p>
+                    <p class="important-tagline">Standard delivery options are also available.</p>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Order and Pay</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Place your order and proceed to payment.</p>
+                    <ion-button class="rounded" color="primary" routerLink="/kaagaz/orders/new">
+                        <ion-icon name="cloud-upload-outline"></ion-icon>
+                        Upload Files
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+        
+        <ion-list *ngSwitchCase="'Institute/Colleges'">
+            <ion-card class="border">
+                <ion-card-header class="inline">
+                    <ion-card-title>Institute/Colleges Documents</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="toggleInstituteInfo()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showInstituteInfo">
+                    <p>This segment caters to students and educational institutions requiring bulk printing for assignments, study materials, or certificates.</p>
+                    <p><strong class="bold">Instructions:</strong> Ensure documents are in PDF or Images format, ready for bulk processing.</p>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Available Options</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col class="icon">
+                                <ion-icon name="document-text-outline" ></ion-icon>
+                                <p>A4</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="document-outline" ></ion-icon>
+                                <p>Legal Size</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="print-outline"></ion-icon>
+                                <p>Binding</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+                                <p>Stapling</p>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col class="icon">
+                                <ion-icon name="file-tray-full-outline"></ion-icon>
+                                <p>Bulk Upload</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="document-attach-outline"></ion-icon>
+                                <p>Templates</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="cash-outline"></ion-icon>
+                                <p>Bulk Discounts</p>
+                            </ion-col>
+                            <ion-col class="icon">
+                                <ion-icon name="card-outline"></ion-icon>
+                                <p>Subscription Plans</p>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header class="inline">
+                    <ion-card-title>Delivery Information</ion-card-title>
+                    <ion-icon class="green" name="information-circle-sharp" (click)="toggleInstituteDeliveryInfo()"></ion-icon>
+                </ion-card-header>
+                <ion-card-content *ngIf="showInstituteDeliveryInfo">
+                    <p><span class="bold">Delivery to Institutions:</span> Bulk delivery options are available for educational institutions.</p>
+                    <p><span class="bold">Individual Delivery:</span> Delivery can be arranged for individual students as well.</p>
+                </ion-card-content>
+            </ion-card>
+            
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Order and Pay</ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <p>Place your bulk order and proceed to payment.</p>
+                    <ion-button class="rounded" color="primary" routerLink="/kaagaz/orders/new">
+                        <ion-icon name="cloud-upload-outline" ></ion-icon>
+                        Upload Files
+                    </ion-button>
+                </ion-card-content>
+            </ion-card>
+        </ion-list>
+    </div>
 </ion-content>

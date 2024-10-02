@@ -13,7 +13,7 @@
             <ion-col size-sm="6" size="12">
                 <ion-content class="ion-padding">
                     <div class="doc-picker">
-                        <kaagaz-doc-picker formControlName="fileToPrint"></kaagaz-doc-picker>
+                        <kaagaz-doc-picker formControlName="fileToPrint" (change)="onFileChange()"></kaagaz-doc-picker>
                     </div>
                     <div class="order-details flex-col ion-margin-top" *ngIf="fileToPrintCT?.value">
                         <kaagaz-order-renderer (docRendered)="onDocRendered()"
@@ -89,6 +89,17 @@
                                         <kaagaz-form-field>
                                             <ion-item class="ion-no-padding" lines="full">
                                                 <ion-text slot="start">
+                                                    <h4> Color Print </h4>
+                                                </ion-text>
+                                                <kaagaz-page-color formControlName="ColorPrint"
+                                                    slot="end"></kaagaz-page-color>
+                                            </ion-item>
+                                        </kaagaz-form-field>
+                                    </li>
+                                    <li class="field">
+                                        <kaagaz-form-field>
+                                            <ion-item class="ion-no-padding" lines="full">
+                                                <ion-text slot="start">
                                                     <h4> Print Type </h4>
                                                 </ion-text>
                                                 <kaagaz-print-side-type formControlName="printType"
@@ -100,7 +111,7 @@
                                         <kaagaz-form-field>
                                             <ion-item class="ion-no-padding" lines="full">
                                                 <ion-text slot="start">
-                                                    <h4> Collate/Staple/Group(H) </h4>
+                                                    <h4> Binding/Staple/Loose </h4>
                                                 </ion-text>
                                                 <kaagaz-collate-type formControlName="collateType"
                                                     slot="end"></kaagaz-collate-type>

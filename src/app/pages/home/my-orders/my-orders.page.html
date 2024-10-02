@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>My Orders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-spinner *ngIf="isLoading"></ion-spinner>
+  
+  <div *ngIf="!isLoading && orders.length === 0">
+    <p>No orders found.</p>
+  </div>
+
+  <ion-list *ngIf="!isLoading && orders.length > 0">
+    <ion-item *ngFor="let order of orders">
+      <ion-label>
+        <h2>Order ID: {{ order.orderId }}</h2>
+        <p>Amount: {{ order.amount }} INR</p>
+        <p>Payment Status: {{ order.paymentStatus === 1 ? 'Paid' : 'Pending' }}</p>
+        <p>Created At: {{ order.created | date }}</p>
+        <p>Updated At: {{ order.updated | date }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

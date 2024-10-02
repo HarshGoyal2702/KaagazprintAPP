@@ -1,8 +1,9 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-menu-button slot="start" (click)="toggleMenu()"></ion-menu-button>
-        <ion-title>Profile</ion-title>
-    </ion-toolbar>
+    <!-- <ion-toolbar "> -->
+     <div class="" style="display: flex; justify-content: space-between; align-items: center; padding: 12px;">
+        <ion-label style="padding: 4px;">Profile</ion-label>
+        <ion-button class="logout" (click)="logout()">Logout</ion-button>
+     </div>
 </ion-header>
 
 <kaagaz-user-profile [user]="user"></kaagaz-user-profile>

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:8080/', // Backend API URL
+  baseUrl: 'http://kaagazprint-backend.ap-south-1.elasticbeanstalk.com/', // Backend API URL
 };
 
 

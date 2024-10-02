@@ -11,6 +11,7 @@ export const APIURLS = {
     SAVED_ORDERS: environment.baseUrl + 'orders/addAll',
     DELETE_ORDER: environment.baseUrl + 'orders/delete',
     ORDER: environment.baseUrl + 'orders/getById',
+    ALL_ORDER: environment.baseUrl + 'orders/getAll',
 
     /** UPLOAD FILE */
     UPLOAD_FILE: environment.baseUrl + 'fileController/upload',

@@ -10,16 +10,17 @@ import { PageOrientationPipe } from './utilities/orientation.pipe';
 import { PaperSizePipe } from './utilities/paper-size.pipe';
 import { OrderStatusPipe } from './utilities/order-status.pipe';
 import { OrderBillPipe } from './utilities/order-bill.pipe';
+import { PageColorPipe } from './utilities/page-color.pipe';
 
 
 
 @NgModule({
   declarations: [OrderRendererComponent, PageCollatePipe, PrintTypePipe, PageLayoutPipe,
-    PageOrientationPipe, PaperSizePipe, OrderStatusPipe, OrderBillPipe],
+    PageOrientationPipe, PaperSizePipe, OrderStatusPipe, OrderBillPipe, PageColorPipe],
   imports: [
     CommonModule, DocsHandlerModule, IonicModule
   ],
   exports: [OrderRendererComponent, PageCollatePipe, PrintTypePipe, PageLayoutPipe,
-    PageOrientationPipe, PaperSizePipe, OrderStatusPipe, OrderBillPipe]
+    PageOrientationPipe, PaperSizePipe, OrderStatusPipe, OrderBillPipe,PageColorPipe]
 })
 export class OrdersModule { }

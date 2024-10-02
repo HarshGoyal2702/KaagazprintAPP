@@ -16,4 +16,5 @@ export class KaagazUser {
     userId: string;
     image: string;
     emailId: string;
+    gender : string;
 }

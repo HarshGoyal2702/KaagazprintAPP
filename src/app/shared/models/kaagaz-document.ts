@@ -22,13 +22,14 @@ export class KaagazDocument {
     fileSize: string;
     thumbnailUrl: string;
 
-    constructor(name: string, localUrl?: string, type?: string, ext?: string, size?: string, fileUrl?: string) {
+    constructor(name: string, localUrl?: string, type?: string, ext?: string, size?: string, fileUrl?: string,numberofPages?:number) {
         this.fileName = name;
         this.type = type;
         this.ext = ext;
         this.localUrl = localUrl;
         this.fileSize = size;
         this.fileUrl = fileUrl;
+        this.numberOfPage = numberofPages
     }
 
 }

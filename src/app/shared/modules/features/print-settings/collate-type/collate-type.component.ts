@@ -7,7 +7,7 @@ import { KaagazCollateType } from 'kaagaz-models';
   templateUrl: './collate-type.component.html',
   styleUrls: ['./collate-type.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CollateTypeComponent), multi: true }]
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => CollateTypeComponent), multi: true}]
 })
 export class CollateTypeComponent implements OnInit, ControlValueAccessor {
 
